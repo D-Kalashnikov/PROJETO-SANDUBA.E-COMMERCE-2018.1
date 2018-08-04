@@ -50,3 +50,13 @@ typedef struct{
 	Pessoa dados;
 	int id_cargo;
 }Funcionario;
+
+typedef struct{
+	Pessoa pessoa;
+	Endereco endereco;
+	Cliente cliente;
+	Funcionario funcionario;
+	Sanduiche sanduiche;
+	Produto produto;
+	Login_password login_password;
+}Sistema;
