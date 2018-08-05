@@ -1,9 +1,9 @@
 void compra_sanduiche(void)
 {
-  int ok = 0, escolha, n_recheio = 3, n_pao = 3, n_molho = 3;
+  int ok = 0, escolha, tam = 10;
   float somatorio;
   Sanduiche sanduiche;
-  Produto recheios[3], paes[3], molhos[3];
+  Produto produtos[10];
 
   printf("\tPRIMEIRO PASSO:\n");
   printf("Escolha o tamanho do seu sanduíche!\n\n1 - 15cm\n2 - 30cm\n\n");
@@ -33,9 +33,12 @@ void compra_sanduiche(void)
   printf("Escolha o recheio do seu sanduíche!");
 
   //Impressão das Opções de Recheio
-  for(int i = 0; i < n_recheio; i++)
+  for(int i = 0; i < tam; i++)
   {
-    printf("%d - %s\n", recheios[i].id, recheios[i].nome);
+    if(produtos[i].tipo == 1)
+    { 
+      printf("%d - %s\n", produtos[i].id, produtos[i].nome);
+    }
   }
 
   //Escolha do Recheio
@@ -43,13 +46,16 @@ void compra_sanduiche(void)
   {
     scanf(" %d", &escolha);
 
-    for(int i = 0; i < n_recheio; i++)
+    for(int i = 0; i < tam; i++)
     {
-      if(escolha == recheios[i].id)
+      if(produtos[i].tipo == 1)
       {
-        sanduiche.recheio = recheios[i];
-        ok = 1;
-        break;
+        if(escolha == produtos[i].id)
+        {
+          sanduiche.recheio = produtos[i];
+          ok = 1;
+          break;
+        }
       }
     }
 
