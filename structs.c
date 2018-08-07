@@ -36,6 +36,8 @@ typedef struct{
 	Produto recheio;
 	Produto	molho;
 	Produto	pao;
+	Produto queijos;
+	Produto salada[8];
 }Sanduiche;
 
 typedef struct{
