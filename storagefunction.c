@@ -25,13 +25,14 @@ void Storage(){
       break;
     }
     printf("___________________\n");
-    printf("ID:%i", produtos[i].id);
-    printf("Nome: %s", produtos[i].nome);
-    printf("Tipo: %i", produtos[i].tipo);
-    printf("Valor de compra: %.2f", produtos[i].valorc);
-    printf("Valor de venda: %.2f", produtos[i].valorv);
-    printf("Quantidade em estoque: %i", produtos[i].qtd);
-    printf("Itens comprados: %i", produtos[i].comprados);
-    printf("Itens vendidos: %i", produtos[i].vendidos);
+    printf("ID:%i\n", produtos[i].id);
+    printf("Nome: %s\n", produtos[i].nome);
+    printf("Tipo: %i\n", produtos[i].tipo);
+    printf("Valor de compra: %.2f\n", produtos[i].valorc);
+    printf("Valor de venda: %.2f\n", produtos[i].valorv);
+    printf("Quantidade em estoque: %i\n", produtos[i].qtd);
+    printf("Itens comprados: %i\n", produtos[i].comprados);
+    printf("Itens vendidos: %i\n", produtos[i].vendidos);
+    printf("\n\n");
   }
 }
