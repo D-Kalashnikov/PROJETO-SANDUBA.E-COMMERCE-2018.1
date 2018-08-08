@@ -7,11 +7,11 @@ void bestseller(){
 
   for(int i = 0; i < ind_tprodutos; i++){
     for (int j = i + 1; j < ind_tprodutos; j++) {
-			if (produtos[i].vendidos < produtos[j].vendidos) {
-				//
+	if (produtos[i].vendidos < produtos[j].vendidos) {
+	//
         aux_v = produtos[i].vendidos;
-				produtos[i].vendidos = produtos[j].vendidos;
-				produtos[j].vendidos = aux_v;
+	produtos[i].vendidos = produtos[j].vendidos;
+	produtos[j].vendidos = aux_v;
         //
         aux_id = produtos[i].id;
         produtos[i].id = produtos[j].id;
