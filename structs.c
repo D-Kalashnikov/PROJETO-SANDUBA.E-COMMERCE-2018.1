@@ -23,7 +23,7 @@ typedef struct{
 typedef struct{
 	int id;
 	char nome[30];
-	int tipo;
+	int tipo; //1 = Pão, 2 = Recheio, 3 = Queijo, 4 = Molho, 5 = Vegetal
 	float valorc;
 	float valorv;
 	int qtd;
