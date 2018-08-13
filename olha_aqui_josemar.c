@@ -12,8 +12,6 @@ Vide (https://github.com/D-Kalashnikov/PROJETO-SANDUBA.E-COMMERCE-2018.1/blob/ma
 
 Na função de alteração, o admin pode tambem precisar alterar os outros atributos além dos valores de compra ou de venda.
 
-A função de busca de um produto eu vou utilizar uma um pouco mais atualizada do que a feita aqui.
-
 Algumas requisições para as funções podem ser pedidas dentro da própria função.
 */
 
