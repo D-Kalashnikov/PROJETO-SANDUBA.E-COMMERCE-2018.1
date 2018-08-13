@@ -1,10 +1,30 @@
+/*
+As novas variaveis adicionadas na struct são obsoletas, pelo fato que ela pode ser acessada com a multiplicação da qtd de produtos comprados pelo
+seu valor de compra e o mesmo se aplica para a venda.
+
+'qtd' é a quantidade do item correspondente em estoque.
+
+Os 'scanf' para a captura de strings não podem ser utilizados pois os nomes em sua maioria são compostos, como exemplo:"queijo do reino", e o 'scanf' só receberia
+"queijo".
+
+A função de imprimir todos os produtos já foi feita como leitura de estoque diretamente do banco de dados.
+Vide (https://github.com/D-Kalashnikov/PROJETO-SANDUBA.E-COMMERCE-2018.1/blob/master/storage/storagefunction.c).
+
+Na função de alteração, o admin pode tambem precisar alterar os outros atributos além dos valores de compra ou de venda.
+
+A função de busca de um produto eu vou utilizar uma um pouco mais atualizada do que a feita aqui.
+
+Algumas requisições para as funções podem ser pedidas dentro da própria função.
+*/
+
+
 typedef struct{
 	int id; // número de identificação do produto, coincide com a sequência que foram cadastrados
 	char nome[30]; 
 	int tipo; // 0-pão, 1-recheio, 2-molho, 3-queijo, 4-salada
 	float valorc; // valor unitário de compra
 	float valorv; // valor unitário de venda
-  float totalc; //ADICIONEI, valor total de compras
+  	float totalc; //ADICIONEI, valor total de compras
 	float totalv; // ADICIONEI, valor total de vendas
 	int qtd; // não sei para que serve?????
 	int comprados; // quantidade de produtos comprados
