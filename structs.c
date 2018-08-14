@@ -44,7 +44,7 @@ typedef struct{
 	Pessoa dados;
 	Endereco endereco;
 	Login_password login_password;
-	int compras_realizadas
+	int compras_realizadas;
 	//Payment pagamento;
 }Cliente;
 
