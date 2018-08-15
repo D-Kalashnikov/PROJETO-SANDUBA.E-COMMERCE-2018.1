@@ -26,6 +26,8 @@ typedef struct{
 	int tipo; //1 = Pão, 2 = Recheio, 3 = Queijo, 4 = Molho, 5 = Vegetal
 	float valorc;
 	float valorv;
+	float totalc;
+	float totalv;
 	int qtd;
 	int comprados;
 	int vendidos;
