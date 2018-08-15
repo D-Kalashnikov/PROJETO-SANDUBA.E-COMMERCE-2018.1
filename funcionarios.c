@@ -61,16 +61,12 @@ int cadastrar_funcionario(int num, Funcionario funcionarios[num], int indice_fun
     scanf("%i", &funcionarios[indice_funcionario].dados.idade);
     getchar();
 
-    //CPF
-    printf("Digite o CPF:\n");
-    fgets(funcionarios[indice_funcionario].dados.cpf, 13, stdin);
-    tam = strlen(funcionarios[indice_funcionario].dados.cpf);
-    funcionarios[indice_funcionario].dados.cpf[tam-1] = '\0';
-
     //STATUS
     funcionarios[indice_funcionario].dados.status = 1;
 
+    return 1;
   }
+  return -1;
 }
 
 //ALTERACAO DE SALARIO
