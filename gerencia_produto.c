@@ -127,7 +127,7 @@ void cadastrar_prod(Produto produto[], int tam, int* pqte_prod_cad)
   int indice = pesquisar_prod(produto, *pqte_prod_cad, nome_teste);
   if(indice==-1)
   {
-    produto[*pqte_prod_cad].id = *pqte_prod_cad;
+    produto[*pqte_prod_cad].id = (*pqte_prod_cad) + 1;
     strcpy(produto[*pqte_prod_cad].nome, nome_teste);
     do
     {
