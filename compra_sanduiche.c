@@ -573,6 +573,8 @@ float compra_sanduiche(int* quant, Produto produtos[], int tam, Cliente* cliente
         sanduiche.salada[i].vendidos += 1;
         sanduiche.salada[i].totalv += sanduiche.salada[i].valorv;
       }
+      
+      carrinho[i] = sanduiche;
     }
   }
   cliente->ultimo_sanduiche = sanduiche;
