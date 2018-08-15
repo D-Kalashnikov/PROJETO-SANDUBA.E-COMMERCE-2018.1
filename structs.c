@@ -38,6 +38,7 @@ typedef struct{
 	Produto	pao;
 	Produto queijos;
 	Produto salada[10];
+	float preco;
 }Sanduiche;
 
 typedef struct{
