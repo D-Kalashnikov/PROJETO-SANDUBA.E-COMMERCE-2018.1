@@ -1,4 +1,4 @@
-float compra_sanduiche(int* quant, Produto produtos[])
+float compra_sanduiche(int* quant, Produto produtos[], Cliente* cliente)
 {
   int num_sand, compra = 1, ok = 0, escolha, esgotado = 0, num = *quant;
   float somatorio = 0;
@@ -17,9 +17,8 @@ float compra_sanduiche(int* quant, Produto produtos[])
     }
     else if(num_sand == 0)
     {
-      printf("\nObrigado pela preferência!\n\n");
-      compra = 0;
-      break;
+      printf("\nAgradecemos pela preferência!\n\n");
+      return 0;
     }
     else if(num_sand > 1)
     {
@@ -30,6 +29,8 @@ float compra_sanduiche(int* quant, Produto produtos[])
       printf("\nComando inválido, por favor insira um dos números indicados.\n\n");
     }
   }
+
+  Sanduiche carrinho[num_sand];
 
   for(int i = 1; i <= num_sand; i++)
   {
@@ -413,12 +414,14 @@ float compra_sanduiche(int* quant, Produto produtos[])
 
       if(sanduiche.tamanhopao == 15)
       {
-        somatorio = somatorio + (sanduiche.recheio.valorv + sanduiche.molho.valorv + sanduiche.queijos.valorv + sanduiche.pao.valorv);
+        sanduiche.preco = (sanduiche.recheio.valorv + sanduiche.molho.valorv + sanduiche.queijos.valorv + sanduiche.pao.valorv);
       }
       else if(sanduiche.tamanhopao == 30)
       {
-        somatorio = somatorio + ((sanduiche.recheio.valorv + sanduiche.molho.valorv + sanduiche.queijos.valorv + sanduiche.pao.valorv) * 2);
+        sanduiche.preco = ((sanduiche.recheio.valorv + sanduiche.molho.valorv + sanduiche.queijos.valorv + sanduiche.pao.valorv) * 2);
       }
+
+      somatorio = somatorio + sanduiche.preco;
 
       printf("\nConferindo:\n\n");
 
@@ -434,7 +437,7 @@ float compra_sanduiche(int* quant, Produto produtos[])
           printf("%s", sanduiche.salada[i].nome);
         }
       }
-      printf("\nPreço: R$ %f", somatorio);
+      printf("\nPreço: R$ %f", sanduiche.preco);
 
       printf("\n\nDeseja adicionar esse Sanduíche ao Carrinho?\n\n1 - Sim\n2 - Não");
 
@@ -508,5 +511,10 @@ float compra_sanduiche(int* quant, Produto produtos[])
         }
       }
     }
+    cliente->ultimo_sanduiche = sanduiche;
+
+    printf("\nO valor total de sua compra foi: R$ %f\n\nAgradecemos pela preferência!", somatorio);
+
+    return somatorio;
   }
 }
