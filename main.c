@@ -1,6 +1,7 @@
 void main()
 {
-  Produto produto[100]; 
+  Produto produto[100];
+  Funcionario funcionario[30];
   int qte_prod_cad = 0;
   float receita = 10000;// 10.000 investimento inicial
   float despesa = 500 + 500 + 2000; // manut. site + frete + salários
