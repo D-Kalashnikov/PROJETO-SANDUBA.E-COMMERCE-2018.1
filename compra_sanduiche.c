@@ -1,4 +1,4 @@
-float compra_sanduiche(int* quant, Produto produtos[], Cliente* cliente)
+float compra_sanduiche(int* quant, Produto produtos[], int tam, Cliente* cliente)
 {
   int num_sand, compra = 1, ok = 0, escolha, esgotado = 0, num = *quant;
   float somatorio = 0;
@@ -12,7 +12,7 @@ float compra_sanduiche(int* quant, Produto produtos[], Cliente* cliente)
 
     if(num_sand == 1)
     {
-      printf("\nHora de começar a compra de seu Sanduíche!\n\n");
+      printf("\nHora de começar a compra de seu Sanduíche (novamente, digitar 0 em qualquer passo irá cancelar a compra)!\n\n");
       break;
     }
     else if(num_sand == 0)
@@ -36,7 +36,7 @@ float compra_sanduiche(int* quant, Produto produtos[], Cliente* cliente)
   {
     if(num_sand > 1)
     {
-      printf("\nHora de começar a compra de seu Sanduíche %d!\n\n", i);
+      printf("\nHora de começar a compra de seu Sanduíche %d (novamente, digitar 0 em qualquer passo irá cancelar a compra)!\n\n", i);
     }
 
     while(compra == 1)
@@ -58,6 +58,11 @@ float compra_sanduiche(int* quant, Produto produtos[], Cliente* cliente)
         {
           sanduiche.tamanhopao = 30;
           break;
+        }
+        else if(escolha == 0)
+        {
+          printf("Agradecemos pela preferência!");
+          return 0;
         }
         else
         {
@@ -89,6 +94,12 @@ float compra_sanduiche(int* quant, Produto produtos[], Cliente* cliente)
       {
         scanf(" %d", &escolha);
 
+        if(escolha == 0)
+        {
+          printf("Agradecemos pela preferência!");
+          return 0;
+        }
+
         for(int i = 0; i < num; i++)
         {
           if(produtos[i].tipo == 1)
@@ -98,6 +109,10 @@ float compra_sanduiche(int* quant, Produto produtos[], Cliente* cliente)
               if(produtos[i].qtd > 0)
               {
                 sanduiche.pao = produtos[i];
+                sanduiche.recheio = produtos[i];
+                produtos[i].qtd = produtos[i].qtd - 1;
+                produtos[i].vendidos = produtos[i].vendidos + 1;
+                produtos[i].totalv = produtos[i].totalv + produtos[i].valorv;
                 ok = 1;
                 break;
               }
@@ -152,6 +167,12 @@ float compra_sanduiche(int* quant, Produto produtos[], Cliente* cliente)
       {
         scanf(" %d", &escolha);
 
+        if(escolha == 0)
+        {
+          printf("Agradecemos pela preferência!");
+          return 0;
+        }
+
         for(int i = 0; i < num; i++)
         {
           if(produtos[i].tipo == 2)
@@ -161,6 +182,9 @@ float compra_sanduiche(int* quant, Produto produtos[], Cliente* cliente)
               if(produtos[i].qtd > 0)
               {
                 sanduiche.recheio = produtos[i];
+                produtos[i].qtd = produtos[i].qtd - 1;
+                produtos[i].vendidos = produtos[i].vendidos + 1;
+                produtos[i].totalv = produtos[i].totalv + produtos[i].valorv;
                 ok = 1;
                 break;
               }
@@ -215,6 +239,12 @@ float compra_sanduiche(int* quant, Produto produtos[], Cliente* cliente)
       {
         scanf(" %d", &escolha);
 
+        if(escolha == 0)
+        {
+          printf("Agradecemos pela preferência!");
+          return 0;
+        }
+
         for(int i = 0; i < num; i++)
         {
           if(produtos[i].tipo == 3)
@@ -224,6 +254,9 @@ float compra_sanduiche(int* quant, Produto produtos[], Cliente* cliente)
               if(produtos[i].qtd > 0)
               {
                 sanduiche.queijos = produtos[i];
+                produtos[i].qtd = produtos[i].qtd - 1;
+                produtos[i].vendidos = produtos[i].vendidos + 1;
+                produtos[i].totalv = produtos[i].totalv + produtos[i].valorv;
                 ok = 1;
                 break;
               }
@@ -278,6 +311,12 @@ float compra_sanduiche(int* quant, Produto produtos[], Cliente* cliente)
       {
         scanf(" %d", &escolha);
 
+        if(escolha == 0)
+        {
+          printf("Agradecemos pela preferência!");
+          return 0;
+        }
+
         for(int i = 0; i < num; i++)
         {
           if(produtos[i].tipo == 4)
@@ -287,6 +326,9 @@ float compra_sanduiche(int* quant, Produto produtos[], Cliente* cliente)
               if(produtos[i].qtd > 0)
               {
                 sanduiche.molho = produtos[i];
+                produtos[i].qtd = produtos[i].qtd - 1;
+                produtos[i].vendidos = produtos[i].vendidos + 1;
+                produtos[i].totalv = produtos[i].totalv + produtos[i].valorv;
                 ok = 1;
                 break;
               }
@@ -344,6 +386,12 @@ float compra_sanduiche(int* quant, Produto produtos[], Cliente* cliente)
       {
         scanf(" %d", &escolha);
 
+        if(escolha == 0)
+        {
+          printf("Agradecemos pela preferência!");
+          return 0;
+        }
+
         for(int i = 0; i < num; i++)
         {
           if(produtos[i].tipo == 5)
@@ -353,6 +401,9 @@ float compra_sanduiche(int* quant, Produto produtos[], Cliente* cliente)
               if(produtos[i].qtd > 0)
               {
                 sanduiche.salada[verduras] = produtos[i];
+                produtos[i].qtd = produtos[i].qtd - 1;
+                produtos[i].vendidos = produtos[i].vendidos + 1;
+                produtos[i].totalv = produtos[i].totalv + produtos[i].valorv;
                 verduras = verduras + 1;
 
                 if((3 - verduras) > 0)
@@ -511,10 +562,10 @@ float compra_sanduiche(int* quant, Produto produtos[], Cliente* cliente)
         }
       }
     }
-    cliente->ultimo_sanduiche = sanduiche;
-
-    printf("\nO valor total de sua compra foi: R$ %f\n\nAgradecemos pela preferência!", somatorio);
-
-    return somatorio;
   }
+  cliente->ultimo_sanduiche = sanduiche;
+
+  printf("\nO valor total de sua compra foi: R$ %f\n\nAgradecemos pela preferência!", somatorio);
+
+  return somatorio;
 }
