@@ -1,6 +1,6 @@
 float compra_sanduiche(int* quant, Produto produtos[], int tam, Cliente* cliente)
 {
-  int num_sand, compra = 1, ok = 0, escolha, esgotado = 0, num = *quant;
+  int verduras = 0, num_sand, compra = 1, ok = 0, escolha, esgotado = 0, num = *quant;
   float somatorio = 0;
   Sanduiche sanduiche;
 
@@ -109,10 +109,6 @@ float compra_sanduiche(int* quant, Produto produtos[], int tam, Cliente* cliente
               if(produtos[i].qtd > 0)
               {
                 sanduiche.pao = produtos[i];
-                sanduiche.recheio = produtos[i];
-                produtos[i].qtd = produtos[i].qtd - 1;
-                produtos[i].vendidos = produtos[i].vendidos + 1;
-                produtos[i].totalv = produtos[i].totalv + produtos[i].valorv;
                 ok = 1;
                 break;
               }
@@ -254,9 +250,6 @@ float compra_sanduiche(int* quant, Produto produtos[], int tam, Cliente* cliente
               if(produtos[i].qtd > 0)
               {
                 sanduiche.queijos = produtos[i];
-                produtos[i].qtd = produtos[i].qtd - 1;
-                produtos[i].vendidos = produtos[i].vendidos + 1;
-                produtos[i].totalv = produtos[i].totalv + produtos[i].valorv;
                 ok = 1;
                 break;
               }
@@ -326,9 +319,6 @@ float compra_sanduiche(int* quant, Produto produtos[], int tam, Cliente* cliente
               if(produtos[i].qtd > 0)
               {
                 sanduiche.molho = produtos[i];
-                produtos[i].qtd = produtos[i].qtd - 1;
-                produtos[i].vendidos = produtos[i].vendidos + 1;
-                produtos[i].totalv = produtos[i].totalv + produtos[i].valorv;
                 ok = 1;
                 break;
               }
@@ -380,7 +370,7 @@ float compra_sanduiche(int* quant, Produto produtos[], int tam, Cliente* cliente
 
       //Escolha das Verduras
 
-      int verduras = 0, continuar = 0;
+      int continuar = 0;
 
       while(1)
       {
@@ -401,10 +391,7 @@ float compra_sanduiche(int* quant, Produto produtos[], int tam, Cliente* cliente
               if(produtos[i].qtd > 0)
               {
                 sanduiche.salada[verduras] = produtos[i];
-                produtos[i].qtd = produtos[i].qtd - 1;
-                produtos[i].vendidos = produtos[i].vendidos + 1;
-                produtos[i].totalv = produtos[i].totalv + produtos[i].valorv;
-                verduras = verduras + 1;
+                verduras += 1;
 
                 if((3 - verduras) > 0)
                 {
@@ -560,6 +547,31 @@ float compra_sanduiche(int* quant, Produto produtos[], int tam, Cliente* cliente
         {
           printf("\nComando inválido. Por favor, insira um dos números indicados.\n\n");
         }
+      }
+    }
+    if(compra == 1)
+    {
+      sanduiche.pao.qtd -= 1;
+      sanduiche.pao.vendidos += 1;
+      sanduiche.pao.totalv += sanduiche.pao.valorv;
+
+      sanduiche.recheio.qtd -= 1;
+      sanduiche.recheio.vendidos += 1;
+      sanduiche.recheio.totalv += sanduiche.recheio.valorv;
+
+      sanduiche.molho.qtd -= 1;
+      sanduiche.molho.vendidos += 1;
+      sanduiche.molho.totalv += sanduiche.molho.valorv;
+
+      sanduiche.queijos.qtd -= 1;
+      sanduiche.queijos.vendidos += 1;
+      sanduiche.queijos.totalv += sanduiche.queijos.valorv;
+
+      for(int i = 0; i < verduras; i++)
+      {
+        sanduiche.salada[i].qtd -= 1;
+        sanduiche.salada[i].vendidos += 1;
+        sanduiche.salada[i].totalv += sanduiche.salada[i].valorv;
       }
     }
   }
