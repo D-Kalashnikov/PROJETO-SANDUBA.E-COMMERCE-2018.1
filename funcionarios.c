@@ -1,14 +1,10 @@
 //BUSCAR FUNCIONARIO
-int buscar_funcionario(int quant, Funcionario funcionarios[quant])
+int buscar_funcionario(int quant, Funcionario funcionarios[quant], char cpf)
 {
   int cont;
-  char cpf[13];
-  printf("Digite o CPF:");
-  scanf("%s", cpf);
-  getchar();
   for(cont=0; cont<quant; cont++)
   {
-    if(strcmp(cpf, funcionarios[cont].dados.cpf)==0)
+    if(strcmp(&cpf, funcionarios[cont].dados.cpf)==0)
     {
       printf("Funcionario encontrado\n");
       printf("Nome: %s\nIdade: %i\nCPF: %s\nStatus: %i\n", funcionarios[cont].dados.nome, funcionarios[cont].dados.idade, funcionarios[cont].dados.cpf, funcionarios[cont].dados.status);
@@ -23,7 +19,13 @@ int buscar_funcionario(int quant, Funcionario funcionarios[quant])
 //REMOVER FUNCIONARIO
 int remover_funcionario(int num, Funcionario funcionarios[num])
 {
-  int resp = buscar_funcionario(num, funcionarios);
+  char cpf[13];
+  int tam;
+  printf("Digite o CPF:\n");
+  fgets(cpf, 13, stdin);
+  tam = strlen(cpf);
+  cpf[tam-1] = '\0';
+  int resp = buscar_funcionario(num, funcionarios, *cpf);
   if(resp !=-1)
   {
     funcionarios[resp].dados.status = 0;
@@ -37,24 +39,38 @@ int remover_funcionario(int num, Funcionario funcionarios[num])
 //CADASTRAR FUNCIONARIO
 int cadastrar_funcionario(int num, Funcionario funcionarios[num], int indice_funcionario)
 {
-  int resp = buscar_funcionario(num, funcionarios);
-  if(resp == -1)
+  int tam, resp;
+  char cpf[13];
+  //CPF
+  printf("Digite o CPF:\n");
+  fgets(cpf, 13, stdin);
+  tam = strlen(cpf);
+  cpf[tam-1] = '\0';
+  resp = buscar_funcionario(num, funcionarios, *cpf);
+  if(resp==-1)
   {
-    
+    strcpy(funcionarios[indice_funcionario].dados.cpf, cpf);
+    //NOME
     printf("Digite o nome do funcionario:\n");
     fgets(funcionarios[indice_funcionario].dados.nome, 50, stdin);
+    tam = strlen(funcionarios[indice_funcionario].dados.nome);
+    funcionarios[indice_funcionario].dados.nome[tam-1] = '\0';
+      
+    //IDADE
     printf("Digite a idade:\n");
     scanf("%i", &funcionarios[indice_funcionario].dados.idade);
     getchar();
+
+    //CPF
     printf("Digite o CPF:\n");
     fgets(funcionarios[indice_funcionario].dados.cpf, 13, stdin);
+    tam = strlen(funcionarios[indice_funcionario].dados.cpf);
+    funcionarios[indice_funcionario].dados.cpf[tam-1] = '\0';
+
+    //STATUS
+    funcionarios[indice_funcionario].dados.status = 1;
+
   }
-}
-
-//RELATORIO FINANCEIRO
-void relatorio_financeiro()
-{
-
 }
 
 //ALTERACAO DE SALARIO
