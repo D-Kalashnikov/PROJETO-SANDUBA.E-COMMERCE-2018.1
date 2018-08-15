@@ -54,7 +54,7 @@ typedef struct{
 
 typedef struct{
 	Pessoa dados;
-	int id_cargo;
+	float salario;
 }Funcionario;
 
 typedef struct{
