@@ -9,7 +9,7 @@ void restock(){
   scanf("%i", &id_toverify);
 
   for(int i=0; i<ind_tprodutos; i++){
-    if(id_toverify == produtos[i].vendidos){
+    if(id_toverify == produtos[i].id){
       printf("ID:%i\n", produtos[i].id);
       printf("Nome: %s\n", produtos[i].nome);
       printf("Tipo: %i\n", produtos[i].tipo);
