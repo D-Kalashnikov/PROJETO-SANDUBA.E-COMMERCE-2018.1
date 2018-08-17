@@ -17,12 +17,11 @@ int buscar_cliente(int quant, Cliente clientes[quant], char cpf)
 }
 
 //BUSCAR LOGIN
-int buscar_login(int quant, Cliente clientes[quant], char login)
+int buscar_login(int quant, Cliente clientes[], char login[])
 {
-  int cont;
-  for(cont=0; cont<quant; cont++)
+  for(int cont=0; cont<quant; cont++)
   {
-    if(strcmp(&login, clientes[cont].login_password.login)==0)
+    if(strcmp(login, clientes[cont].login_password.login)==0)
     {
       return 1;
     }
