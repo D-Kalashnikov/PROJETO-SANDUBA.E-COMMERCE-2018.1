@@ -59,7 +59,6 @@ typedef struct{
 
 typedef struct{
 	Pessoa dados;
-	Endereco endereco;
 	Login_password login_password;
 }Admin
 
