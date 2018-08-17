@@ -25,21 +25,30 @@ int buscar_login(int quant, Cliente clientes[], char login[])
     {
       return 1;
     }
-    return -1;
-  }
-}
-
-//BUSCAR SENHA
-int buscar_senha(int quant, Cliente clientes[], char password[])
-{
-  for(int cont=0; cont<quant; cont++)
-  {
-    if(strcmp(password, clientes[cont].login_password.password)==0)
-    {
-      return 1;
-    }
   }
   return -1;
+}
+
+//BUSCAR PASSWORD
+int buscar_password(int quant, Cliente clientes[], char password[], char login[])
+{
+  int check = buscar_login(quant, clientes, login);
+
+  if(check == 1)
+  {
+    for(int cont = 0; cont < quant; cont++)
+    {
+      if(strcmp(password, clientes[cont].login_password.password) == 0)
+      {
+        return 1;
+      }
+    }
+    return -1;
+  }
+  else
+  {
+    return -1;
+  }
 }
 
 //CADASTRO CLIENTE
@@ -180,5 +189,32 @@ int remover_cliente(int quant, Cliente clientes)
   {
     printf("Cliente nao achado\n");
     return -1;
+  }
+}
+
+int login_function(int num, Cliente clientes[])
+{
+  char login[30], password[9];
+  int tam, erro = 0;
+
+  printf("\nDigite o seu Nome de Usuário:\n\n");
+  fgets(login, 30, stdin);
+  tam = strlen(login);
+  login[tam-1] = '\0';
+  
+  printf("\nDigite a sua Senha:\n\n");
+  fgets(password, 9, stdin);
+  tam = strlen(password);
+  password[tam-1] = '\0';
+
+  int check = buscar_password(num, clientes, password, login);
+
+  if(check == 1)
+  {
+    return 1; //Login e Senha corretos
+  }
+  else
+  {
+    return -1; //Dados incorretos
   }
 }
