@@ -195,7 +195,7 @@ int remover_cliente(int quant, Cliente clientes)
 int login_function(int num, Cliente clientes[])
 {
   char login[30], password[9];
-  int tam, erro = 0;
+  int tam;
 
   printf("\nDigite o seu Nome de Usuário:\n\n");
   fgets(login, 30, stdin);
