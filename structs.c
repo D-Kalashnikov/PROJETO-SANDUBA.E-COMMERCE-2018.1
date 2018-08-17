@@ -58,6 +58,12 @@ typedef struct{
 }Funcionario;
 
 typedef struct{
+	Pessoa dados;
+	Endereco endereco;
+	Login_password login_password;
+}Admin
+
+typedef struct{
 	Pessoa pessoa;
 	Endereco endereco;
 	Cliente cliente;
@@ -65,4 +71,5 @@ typedef struct{
 	Sanduiche sanduiche;
 	Produto produto;
 	Login_password login_password;
+	Admin admin;
 }Sistema;
