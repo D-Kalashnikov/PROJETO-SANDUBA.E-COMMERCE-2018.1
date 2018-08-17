@@ -1,10 +1,10 @@
 //BUSCAR FUNCIONARIO
-int buscar_funcionario(int quant, Funcionario funcionarios[quant], char cpf)
+int buscar_funcionario(int quant, Funcionario funcionarios[], char* cpf)
 {
   int cont;
   for(cont=0; cont<quant; cont++)
   {
-    if(strcmp(&cpf, funcionarios[cont].dados.cpf)==0)
+    if(strcmp(cpf, funcionarios[cont].dados.cpf)==0)
     {
       printf("Funcionario encontrado\n");
       printf("Nome: %s\nIdade: %i\nCPF: %s\nStatus: %i\n", funcionarios[cont].dados.nome, funcionarios[cont].dados.idade, funcionarios[cont].dados.cpf, funcionarios[cont].dados.status);
