@@ -25,12 +25,19 @@ int remover_funcionario(int num, Funcionario funcionarios[num])
   fgets(cpf, 13, stdin);
   tam = strlen(cpf);
   cpf[tam-1] = '\0';
-  int resp = buscar_funcionario(num, funcionarios, *cpf);
+  int resp = buscar_funcionario(num, funcionarios, cpf);
   if(resp !=-1)
   {
-    funcionarios[resp].dados.status = 0;
-    printf("Funcionario removido\n");
-    return 1;
+    if(funcionarios[resp].dados.status == 5)
+    {
+      funcionarios[resp].dados.status = 6;
+      printf("Funcionario removido\n");
+      return 1;
+    }
+    else
+    {
+      printf("Funcionario já esta removido\n");
+    }
   }
   printf("Funcionario não pode ser removido\n");
   return -1;
@@ -46,7 +53,7 @@ int cadastrar_funcionario(int num, Funcionario funcionarios[num], int indice_fun
   fgets(cpf, 13, stdin);
   tam = strlen(cpf);
   cpf[tam-1] = '\0';
-  resp = buscar_funcionario(num, funcionarios, *cpf);
+  resp = buscar_funcionario(num, funcionarios, cpf);
   if(resp==-1)
   {
     strcpy(funcionarios[indice_funcionario].dados.cpf, cpf);
@@ -62,7 +69,7 @@ int cadastrar_funcionario(int num, Funcionario funcionarios[num], int indice_fun
     getchar();
 
     //STATUS
-    funcionarios[indice_funcionario].dados.status = 1;
+    funcionarios[indice_funcionario].dados.status = 5;
 
     return 1;
   }
