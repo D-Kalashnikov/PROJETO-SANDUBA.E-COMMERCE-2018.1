@@ -29,6 +29,19 @@ int buscar_login(int quant, Cliente clientes[], char login[])
   }
 }
 
+//BUSCAR SENHA
+int buscar_senha(int quant, Cliente clientes[], char password[])
+{
+  for(int cont=0; cont<quant; cont++)
+  {
+    if(strcmp(password, clientes[cont].login_password.password)==0)
+    {
+      return 1;
+    }
+  }
+  return -1;
+}
+
 //CADASTRO CLIENTE
 int cadastro_cliente(int num, Cliente clientes[num], int indice_cliente)
 {
