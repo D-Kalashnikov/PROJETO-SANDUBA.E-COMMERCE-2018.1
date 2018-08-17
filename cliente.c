@@ -22,7 +22,7 @@ int buscar_login(int quant, Cliente clientes[quant], char login)
   int cont;
   for(cont=0; cont<quant; cont++)
   {
-    if(strcmp(&login, clientes[cont].login_password.login))
+    if(strcmp(&login, clientes[cont].login_password.login)==0)
     {
       return 1;
     }
