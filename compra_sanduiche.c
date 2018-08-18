@@ -71,7 +71,8 @@ float compra_sanduiche(int* quant, Produto produtos[], int tam, Cliente* cliente
       }
 
       printf("\t\n\nSEGUNDO PASSO:\n");
-      printf("Escolha o tipo de pão do seu sanduíche!");
+      //antes printf("Escolha o tipo de pão do seu sanduíche!");
+      printf("Escolha o tipo de pão do seu sanduíche!\n");
 
       //Impressão das Opções de Pão
       for(int i = 0; i < num; i++)
@@ -140,7 +141,8 @@ float compra_sanduiche(int* quant, Produto produtos[], int tam, Cliente* cliente
       }
 
       printf("\t\n\nTERCEIRO PASSO:\n");
-      printf("Escolha o recheio do seu sanduíche!");
+      //antes printf("Escolha o recheio do seu sanduíche!");
+      printf("Escolha o recheio do seu sanduíche!\n");
 
       //Impressão das Opções de Recheio
       for(int i = 0; i < num; i++)
@@ -178,9 +180,10 @@ float compra_sanduiche(int* quant, Produto produtos[], int tam, Cliente* cliente
               if(produtos[i].qtd > 0)
               {
                 sanduiche.recheio = produtos[i];
-                produtos[i].qtd = produtos[i].qtd - 1;
-                produtos[i].vendidos = produtos[i].vendidos + 1;
-                produtos[i].totalv = produtos[i].totalv + produtos[i].valorv;
+                //antes produtos[i].qtd = produtos[i].qtd - 1;
+                //antes produtos[i].vendidos = produtos[i].vendidos + 1;
+                //antes produtos[i].totalv = produtos[i].totalv + produtos[i].valorv;
+                //JOSEMAR - retirei isso do teu código porque, do jeito que está, a compra é contabilizada mesmo que o cliente desista dela.
                 ok = 1;
                 break;
               }
@@ -212,7 +215,8 @@ float compra_sanduiche(int* quant, Produto produtos[], int tam, Cliente* cliente
       }
 
       printf("\t\n\nQUARTO PASSO:\n");
-      printf("Escolha o tipo de queijo do seu sanduíche!");
+      //antes printf("Escolha o tipo de queijo do seu sanduíche!");
+      printf("Escolha o tipo de queijo do seu sanduíche!\n");
 
       //Impressão das Opções de Queijo
       for(int i = 0; i < num; i++)
@@ -281,7 +285,8 @@ float compra_sanduiche(int* quant, Produto produtos[], int tam, Cliente* cliente
       }
 
       printf("\t\n\nQUINTO PASSO:\n");
-      printf("Escolha o tipo de molho do seu sanduíche!");
+      //antes printf("Escolha o tipo de molho do seu sanduíche!");
+      printf("Escolha o tipo de molho do seu sanduíche!\n");
 
       //Impressão das Opções de Molho
       for(int i = 0; i < num; i++)
@@ -580,6 +585,30 @@ float compra_sanduiche(int* quant, Produto produtos[], int tam, Cliente* cliente
   cliente->ultimo_sanduiche = sanduiche;
 
   printf("\nO valor total de sua compra foi: R$ %f\n\nAgradecemos pela preferência!", somatorio);
+  
+  //ADIÇÃO JOSEMAR
+  produtos[sanduiche.pao.id -1].qtd -= 1;
+  produtos[sanduiche.pao.id -1].vendidos += 1;
+  produtos[sanduiche.pao.id -1].totalv += sanduiche.pao.valorv;
+
+  produtos[sanduiche.recheio.id -1].qtd -= 1;
+  produtos[sanduiche.recheio.id -1].vendidos += 1;
+  produtos[sanduiche.recheio.id -1].totalv += sanduiche.recheio.valorv;
+
+  produtos[sanduiche.molho.id -1].qtd -= 1;
+  produtos[sanduiche.molho.id -1].vendidos += 1;
+  produtos[sanduiche.molho.id -1].totalv += sanduiche.molho.valorv;
+
+  produtos[sanduiche.queijos.id -1].qtd -= 1;
+  produtos[sanduiche.queijos.id -1].vendidos += 1;
+  produtos[sanduiche.queijos.id -1].totalv += sanduiche.queijos.valorv;
+
+  for(int i = 0; i < verduras; i++)
+  {
+    produtos[sanduiche.salada[i].id -1].qtd -= 1;
+    produtos[sanduiche.salada[i].id -1].vendidos += 1;
+    produtos[sanduiche.salada[i].id -1].totalv += sanduiche.salada[i].valorv;
+  }
 
   return somatorio;
 }
