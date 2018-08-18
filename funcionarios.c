@@ -37,6 +37,7 @@ int remover_funcionario(int num, Funcionario funcionarios[num])
     else
     {
       printf("Funcionario já esta removido\n");
+      return 0;
     }
   }
   printf("Funcionario não pode ser removido\n");
