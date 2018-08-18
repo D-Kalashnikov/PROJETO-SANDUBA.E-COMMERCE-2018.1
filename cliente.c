@@ -111,6 +111,7 @@ int cadastro_cliente(int num, Cliente clientes[num], int indice_cliente)
       //LOGIN 
       while(fim!=1)
       {
+      getchar();
       printf("Digite o seu login:\n");
       fgets(login, 30, stdin);
       tam = strlen(login);
@@ -131,8 +132,10 @@ int cadastro_cliente(int num, Cliente clientes[num], int indice_cliente)
     //SENHA
     while(fim!=0)
     {
-      printf("Escolha uma senha para sua conta\n");
+      printf("Escolha uma senha para sua conta:\n");
       fgets(clientes[indice_cliente].login_password.password, 9, stdin);
+      tam = strlen(clientes[indice_cliente].login_password.password);
+      clientes[indice_cliente].login_password.password[tam-1] = '\0';
       fim = 0;
 
       //STATUS
@@ -151,7 +154,7 @@ int cadastro_cliente(int num, Cliente clientes[num], int indice_cliente)
 }
 
 //REMOVER CLIENTE 
-/*int remover_cliente(int quant, Cliente clientes)
+int remover_cliente(int quant, Cliente clientes[])
 {
   int resp, tam;
   char cpf[13];
@@ -159,17 +162,26 @@ int cadastro_cliente(int num, Cliente clientes[num], int indice_cliente)
   fgets(cpf, 13, stdin);
   tam = strlen(cpf);
   cpf[tam-1] = '\0';
-  resp = buscar_cliente(quant, &clientes, *cpf);
+  resp = buscar_cliente(quant, clientes, cpf);
   if(resp !=-1)
   {
     int resp2;
-    printf("Cliente achado\nDeseja remover cliente?\n1-nao  2-sim");
+    printf("Cliente achado\nDeseja remover cliente?\n1-sim  2-nao\n");
     scanf("%i", &resp2);
-    if(resp==2)
+    getchar();
+    if(resp2==1)
     {
-      clientes[resp].dados.status = 0;
-      printf("Cliente removido\n");
-      return 2;
+      if(clientes[resp].dados.status == 5)
+      {
+        clientes[resp].dados.status = 6;
+        printf("Cliente removido\n");
+        return 2;
+      }
+      else
+      {
+        printf("O cliente ja estava removido\n");
+        return 0;
+      }
     }
     else
     {
@@ -182,4 +194,18 @@ int cadastro_cliente(int num, Cliente clientes[num], int indice_cliente)
     printf("Cliente nao achado\n");
     return -1;
   }
-}*/
+}
+
+
+//BUSCAR SENHA 
+int buscar_senha(int quant, Cliente clientes[], char password[]) 
+{ 
+  for(int cont=0; cont<quant; cont++) 
+  { 
+    if(strcmp(password, clientes[cont].login_password.password)==0) 
+    { 
+      return 1; 
+    } 
+  } 
+  return -1; 
+} 
