@@ -400,7 +400,7 @@ float compra_sanduiche(int* quant, Produto produtos[], int tam, Cliente* cliente
 
                 if((3 - verduras) > 0)
                 {
-                  printf("\nDeseja pôr mais alguma verdura? (Você ainda pode colocar mais %d!\n\n)", (3 - verduras));
+                  printf("\nDeseja pôr mais alguma verdura? (Você ainda pode colocar mais %d!)\n\n", (3 - verduras));
                   printf("1 - Sim\n2 - Não\n\n");
                   while(1)
                   {
