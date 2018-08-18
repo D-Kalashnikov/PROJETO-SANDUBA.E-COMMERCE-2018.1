@@ -464,8 +464,6 @@ float compra_sanduiche(int* quant, Produto produtos[], int tam, Cliente* cliente
         sanduiche.preco = ((sanduiche.recheio.valorv + sanduiche.molho.valorv + sanduiche.queijos.valorv + sanduiche.pao.valorv) * 2);
       }
 
-      somatorio = somatorio + sanduiche.preco;
-
       printf("\nConferindo:\n\n");
 
       printf("Sanduíche de %s\n Pão: %s\nQueijo: %s\nMolho: %s\nVegetais: ", sanduiche.recheio.nome, sanduiche.pao.nome, sanduiche.queijos.nome, sanduiche.molho.nome);
@@ -554,61 +552,40 @@ float compra_sanduiche(int* quant, Produto produtos[], int tam, Cliente* cliente
         }
       }
     }
-    if(compra == 1)
+    
+    if(compra == 0)
     {
-      sanduiche.pao.qtd -= 1;
-      sanduiche.pao.vendidos += 1;
-      sanduiche.pao.totalv += sanduiche.pao.valorv;
+      produtos[sanduiche.pao.id -1].qtd -= 1;
+      produtos[sanduiche.pao.id -1].vendidos += 1;
+      produtos[sanduiche.pao.id -1].totalv += sanduiche.pao.valorv;
 
-      sanduiche.recheio.qtd -= 1;
-      sanduiche.recheio.vendidos += 1;
-      sanduiche.recheio.totalv += sanduiche.recheio.valorv;
+      produtos[sanduiche.recheio.id -1].qtd -= 1;
+      produtos[sanduiche.recheio.id -1].vendidos += 1;
+      produtos[sanduiche.recheio.id -1].totalv += sanduiche.recheio.valorv;
 
-      sanduiche.molho.qtd -= 1;
-      sanduiche.molho.vendidos += 1;
-      sanduiche.molho.totalv += sanduiche.molho.valorv;
+      produtos[sanduiche.molho.id -1].qtd -= 1;
+      produtos[sanduiche.molho.id -1].vendidos += 1;
+      produtos[sanduiche.molho.id -1].totalv += sanduiche.molho.valorv;
 
-      sanduiche.queijos.qtd -= 1;
-      sanduiche.queijos.vendidos += 1;
-      sanduiche.queijos.totalv += sanduiche.queijos.valorv;
+      produtos[sanduiche.queijos.id -1].qtd -= 1;
+      produtos[sanduiche.queijos.id -1].vendidos += 1;
+      produtos[sanduiche.queijos.id -1].totalv += sanduiche.queijos.valorv;
 
       for(int i = 0; i < verduras; i++)
       {
-        sanduiche.salada[i].qtd -= 1;
-        sanduiche.salada[i].vendidos += 1;
-        sanduiche.salada[i].totalv += sanduiche.salada[i].valorv;
+        produtos[sanduiche.salada[i].id -1].qtd -= 1;
+        produtos[sanduiche.salada[i].id -1].vendidos += 1;
+        produtos[sanduiche.salada[i].id -1].totalv += sanduiche.salada[i].valorv;
       }
-      
+
+      somatorio = somatorio + sanduiche.preco;
+
       carrinho[i] = sanduiche;
     }
   }
   cliente->ultimo_sanduiche = sanduiche;
 
   printf("\nO valor total de sua compra foi: R$ %f\n\nAgradecemos pela preferência!", somatorio);
-  
-  //ADIÇÃO JOSEMAR
-  produtos[sanduiche.pao.id -1].qtd -= 1;
-  produtos[sanduiche.pao.id -1].vendidos += 1;
-  produtos[sanduiche.pao.id -1].totalv += sanduiche.pao.valorv;
-
-  produtos[sanduiche.recheio.id -1].qtd -= 1;
-  produtos[sanduiche.recheio.id -1].vendidos += 1;
-  produtos[sanduiche.recheio.id -1].totalv += sanduiche.recheio.valorv;
-
-  produtos[sanduiche.molho.id -1].qtd -= 1;
-  produtos[sanduiche.molho.id -1].vendidos += 1;
-  produtos[sanduiche.molho.id -1].totalv += sanduiche.molho.valorv;
-
-  produtos[sanduiche.queijos.id -1].qtd -= 1;
-  produtos[sanduiche.queijos.id -1].vendidos += 1;
-  produtos[sanduiche.queijos.id -1].totalv += sanduiche.queijos.valorv;
-
-  for(int i = 0; i < verduras; i++)
-  {
-    produtos[sanduiche.salada[i].id -1].qtd -= 1;
-    produtos[sanduiche.salada[i].id -1].vendidos += 1;
-    produtos[sanduiche.salada[i].id -1].totalv += sanduiche.salada[i].valorv;
-  }
 
   return somatorio;
 }
