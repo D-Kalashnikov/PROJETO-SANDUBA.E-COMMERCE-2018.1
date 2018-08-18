@@ -1,4 +1,4 @@
-void Add_Admin(){
+void Add_Admin(int ind_admins, Admin admins[ind_admins]){
   char c;
   char cpf[13];
   char login[30];
