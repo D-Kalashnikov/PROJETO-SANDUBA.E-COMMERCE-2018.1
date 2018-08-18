@@ -1,5 +1,5 @@
 void Storage(){
-  for(int i; i < tam; i++){
+  for(int i; i < tam;){
     readStorageDB("storageDB.txt", produtos, ind_tprodutos);
     
     printf("___________________\n");
@@ -34,5 +34,11 @@ void Storage(){
     printf("Itens comprados: %i\n", produtos[i].comprados);
     printf("Itens vendidos: %i\n", produtos[i].vendidos);
     printf("\n\n");
+    i++;
+    if(i%10 == 0 && i !=0){
+      printf("Pressione alguma tecla para avançar para a próxima página...");
+      getchar();
+      system("cls");
+    }
   }
 }
