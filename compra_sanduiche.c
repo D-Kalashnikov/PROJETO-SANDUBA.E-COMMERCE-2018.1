@@ -34,6 +34,8 @@ float compra_sanduiche(int* quant, Produto produtos[], int tam, Cliente* cliente
 
   for(int i = 1; i <= num_sand; i++)
   {
+    compra = 1;
+    
     if(num_sand > 1)
     {
       printf("\nHora de começar a compra de seu Sanduíche %d (novamente, digitar 0 em qualquer passo irá cancelar a compra)!\n\n", i);
