@@ -1,6 +1,8 @@
-void AdminDisable(int quant, Admin admins[quant]){
+void AdminDisable(int ind_admins, Admin admins[ind_admins]){
   int choice;
-  int search = admin_search(quant, admins);
+  char cpf[13];
+  printf("Digite o CPF do Admin a ser desabilitado:\n");
+  int search = admin_search(ind_admins, admins, cpf);
   int flag = 0;
 
   do{
@@ -10,7 +12,7 @@ void AdminDisable(int quant, Admin admins[quant]){
     printf("2 - Não\n");
     scanf("%i", &choice);
       if(choice == 1){
-        admins[cont].dados.status = 7;
+        admins[search].dados.status = 7;
         flag = 1;
       }
 
