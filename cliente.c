@@ -209,3 +209,24 @@ int buscar_senha(int quant, Cliente clientes[], char password[])
   } 
   return -1; 
 } 
+
+//BUSCAR PASSWORD 
+int buscar_password(int quant, Cliente clientes[], char password[], char login[]) 
+{ 
+  int check = buscar_login(quant, clientes, login); 
+  if(check == 1) 
+  { 
+    for(int cont = 0; cont < quant; cont++)
+    { 
+      if(strcmp(password, clientes[cont].login_password.password) == 0) 
+      { 
+        return 1;
+      }
+    }
+    return -1;
+  } 
+  else 
+  { 
+    return -1;
+  } 
+} 
