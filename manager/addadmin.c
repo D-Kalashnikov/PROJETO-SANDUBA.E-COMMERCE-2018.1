@@ -9,7 +9,7 @@ void Add_Admin(){
     printf("Digite o CPF a ser cadastrado:\n");
     scanf("%s", cpf);
 
-    int search = admin_search(range, admins, cpf);
+    int search = admin_search(ind_admins, admins, cpf);
 
     if(search == -1){
       strcpy(admins[ind_admins].dados.cpf, cpf);
@@ -28,7 +28,7 @@ void Add_Admin(){
       do{
         printf("Digite o login do novo Administrador:\n");
         fgets(login, 30, stdin);
-        int login_admsearch = loginadmin_search(range, admins, login);
+        int login_admsearch = loginadmin_search(ind_admins, admins, login);
 
         if(login_admsearch == -1){
           strcpy(admins[ind_admins].login_password.login, login);
