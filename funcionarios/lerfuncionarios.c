@@ -3,3 +3,6 @@ void readFuncionarios(char* path, Funcionario* funcionarios, int tam){
     fread(funcionarios, sizeof(Funcionario), tam, archive);
     fclose(archive);
 }
+
+
+//readFuncionarios("FuncionariosDB.txt", funcionarios, ind_tfuncionarios) ← padrão de uso por favor seguir
