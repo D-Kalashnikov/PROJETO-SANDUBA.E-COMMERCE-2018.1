@@ -30,8 +30,6 @@ float compra_sanduiche(int* quant, Produto produtos[], int tam, Cliente* cliente
     }
   }
 
-  Sanduiche carrinho[num_sand];
-
   for(int i = 1; i <= num_sand; i++)
   {
     compra = 1;
@@ -482,7 +480,7 @@ float compra_sanduiche(int* quant, Produto produtos[], int tam, Cliente* cliente
       }
       printf("\nPreço: R$ %f", sanduiche.preco);
 
-      printf("\n\nDeseja adicionar esse Sanduíche ao Carrinho?\n\n1 - Sim\n2 - Não");
+      printf("\n\nDeseja comprar esse Sanduíche?\n\n1 - Sim\n2 - Não");
 
       while(1)
       {
@@ -581,8 +579,6 @@ float compra_sanduiche(int* quant, Produto produtos[], int tam, Cliente* cliente
       }
 
       somatorio = somatorio + sanduiche.preco;
-
-      carrinho[i] = sanduiche;
     }
   }
   cliente->ultimo_sanduiche = sanduiche;
