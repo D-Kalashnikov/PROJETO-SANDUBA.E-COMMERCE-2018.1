@@ -28,7 +28,7 @@ void Add_Admin(){
       do{
         printf("Digite o login do novo Administrador:\n");
         fgets(login, 30, stdin);
-        int login_admsearch = (range, admins, login);
+        int login_admsearch = loginadmin_search(range, admins, login);
 
         if(login_admsearch == -1){
           strcpy(admins[ind_admins].login_password.login, login);
