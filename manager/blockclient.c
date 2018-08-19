@@ -1,6 +1,6 @@
-void BlockClient(int quant, Cliente clientes[quant]){
+void BlockClient(int ind_tclientes, Cliente clientes[ind_tclientes]){
   int choice;
-  int search = client_search(quant, clientes);
+  int search = client_search(ind_tclientes, clientes);
   int flag = 0;
 
   do{
@@ -10,7 +10,7 @@ void BlockClient(int quant, Cliente clientes[quant]){
     printf("2 - Não\n");
     scanf("%i", &choice);
       if(choice == 1){
-        clientes[cont].dados.status = 3;
+        clientes[search].dados.status = 3;
         flag = 1;
       }
 
