@@ -31,5 +31,9 @@ void AdminDisable(int ind_admins, Admin admins[ind_admins]){
         system("cls");
       }
     }
+    
+    else{
+      printf("Admin não encontrado!\n");
+    }
   }while(flag == 0);
 }
