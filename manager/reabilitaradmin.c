@@ -14,8 +14,14 @@ void AdminEnabled(int ind_admins, Admin admins[ind_admins]){
     printf("2 - Não\n");
     scanf("%i", &choice);
       if(choice == 1){
+        if(admins[search].dados.status != 4){
         admins[search].dados.status = 4;
         flag = 1;
+        }
+        
+        else{
+          printf("Admin já está disponivel!\n");
+        }
       }
 
       else if(choice == 2){
