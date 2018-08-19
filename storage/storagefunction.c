@@ -1,4 +1,4 @@
-void Storage(){
+void Storage(int ind_tprodutos, Produto produtos[ind_tprodutos]){
   for(int i; i < tam;){
     readStorageDB("storageDB.txt", produtos, ind_tprodutos);
     
