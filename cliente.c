@@ -1,3 +1,35 @@
+//LIMPAR BUFFER
+void limpar_buffer()
+{
+  char c;
+  while(c !='\n')
+  {
+    c = getchar();
+  }
+}
+
+//BUSCAR VAZIO
+int buscar_vazio(int quant, char palavra[])
+{
+  int cont, cont2=0;
+  for(cont = 0; cont<quant; cont++)
+  {
+    if(palavra[cont] == 32)
+    {
+      cont2 = cont2 + 1;
+    }
+  }
+  if(cont2==quant)
+  {
+    return -1;
+  }
+  else
+  {
+    return 1;
+  }
+}
+
+
 //BUSCAR CLIENTE
 int buscar_cliente(int quant, Cliente clientes[quant], char* cpf)
 {
@@ -42,6 +74,7 @@ int cadastro_cliente(int num, Cliente clientes[num], int indice_cliente)
   fgets(cpf, 13, stdin);
   tam = strlen(cpf);
   cpf[tam-1] = '\0';
+  limpar_buffer();
   resp = buscar_cliente(num, clientes, cpf);
   if(resp == -1)
   {
@@ -57,6 +90,7 @@ int cadastro_cliente(int num, Cliente clientes[num], int indice_cliente)
       fgets(clientes[indice_cliente].dados.nome, 50, stdin);
       tam = strlen(clientes[indice_cliente].dados.nome);
       clientes[indice_cliente].dados.nome[tam-1] = '\0';
+      limpar_buffer();
 
       //IDADE
       printf("Digite a sua idade:\n");
@@ -70,6 +104,7 @@ int cadastro_cliente(int num, Cliente clientes[num], int indice_cliente)
       fgets(clientes[indice_cliente].endereco.rua, 100, stdin);
       tam = strlen(clientes[indice_cliente].endereco.rua);
       clientes[indice_cliente].endereco.rua[tam-1] = '\0';
+      limpar_buffer();
 
       //NUMERO 
       printf("Digite o numero da sua casa:\n");
@@ -81,30 +116,35 @@ int cadastro_cliente(int num, Cliente clientes[num], int indice_cliente)
       fgets(clientes[indice_cliente].endereco.complemento, 100, stdin);
       tam = strlen(clientes[indice_cliente].endereco.complemento);
       clientes[indice_cliente].endereco.complemento[tam-1] = '\0';
+      limpar_buffer();
 
       //BAIRRO 
       printf("Digite o bairro:\n");
       fgets(clientes[indice_cliente].endereco.bairro, 30, stdin);
       tam = strlen(clientes[indice_cliente].endereco.bairro);
       clientes[indice_cliente].endereco.bairro[tam-1] = '\0';
+      limpar_buffer();
 
       //CEP 
       printf("Digite o seu CEP:\n");
       fgets(clientes[indice_cliente].endereco.cep, 10, stdin);
       tam = strlen(clientes[indice_cliente].endereco.cep);
       clientes[indice_cliente].endereco.cep[tam-1] = '\0';
+      limpar_buffer();
 
       //CIDADE 
       printf("Digite a sua cidade:\n");
       fgets(clientes[indice_cliente].endereco.cidade, 30, stdin);
       tam = strlen(clientes[indice_cliente].endereco.cidade);
       clientes[indice_cliente].endereco.cidade[tam-1] = '\0';
+      limpar_buffer();
 
       //ESTADO 
       printf("Digite a sigla do seu estado:\n");
       fgets(clientes[indice_cliente].endereco.estado, 3, stdin);
       tam = strlen(clientes[indice_cliente].endereco.estado);
       clientes[indice_cliente].endereco.estado[tam-1] = '\0';
+      limpar_buffer();
 
             //CONTA
       printf("\tConta:\n\n");
@@ -116,6 +156,7 @@ int cadastro_cliente(int num, Cliente clientes[num], int indice_cliente)
       fgets(login, 30, stdin);
       tam = strlen(login);
       login[tam-1] = '\0';
+      limpar_buffer();
       resp2 = buscar_login(num, clientes, login);
       if(resp == -1)
       {
@@ -136,6 +177,7 @@ int cadastro_cliente(int num, Cliente clientes[num], int indice_cliente)
       fgets(clientes[indice_cliente].login_password.password, 9, stdin);
       tam = strlen(clientes[indice_cliente].login_password.password);
       clientes[indice_cliente].login_password.password[tam-1] = '\0';
+      limpar_buffer();
       fim = 0;
 
       //STATUS
@@ -162,6 +204,7 @@ int remover_cliente(int quant, Cliente clientes[])
   fgets(cpf, 13, stdin);
   tam = strlen(cpf);
   cpf[tam-1] = '\0';
+  limpar_buffer();
   resp = buscar_cliente(quant, clientes, cpf);
   if(resp !=-1)
   {
