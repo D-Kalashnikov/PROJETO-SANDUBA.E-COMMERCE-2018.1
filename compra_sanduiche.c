@@ -470,7 +470,7 @@ float compra_sanduiche(Produto produtos[], int tam, Cliente* cliente)
         }
       }
 
-      while(sim == 1)
+      if(sim == 1)
       {
         printf("\t\n\nSEXTO PASSO:\n");
         printf("Escolha as verduras que colocará em seu sanduíche (no máximo 3 tipos)!");
