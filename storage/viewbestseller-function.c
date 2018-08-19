@@ -1,4 +1,4 @@
-void bestseller(){
+void bestseller(int ind_tprodutos, Produto produtos[ind_tprodutos]){
   readStorageDB("storageDB.txt", produtos, ind_tprodutos);
 
   int aux_v=0;
