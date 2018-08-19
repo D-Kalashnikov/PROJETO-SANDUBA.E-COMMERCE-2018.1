@@ -1,6 +1,6 @@
-float compra_sanduiche(int* quant, Produto produtos[], int tam, Cliente* cliente)
+float compra_sanduiche(Produto produtos[], int tam, Cliente* cliente)
 {
-  int verduras = 0, num_sand, compra = 1, ok = 0, escolha, esgotado = 0, num = *quant;
+  int verduras = 0, num_sand, compra = 1, ok = 0, escolha, esgotado = 0, num = tam;
   float somatorio = 0;
   Sanduiche sanduiche;
 
@@ -33,7 +33,7 @@ float compra_sanduiche(int* quant, Produto produtos[], int tam, Cliente* cliente
   for(int i = 1; i <= num_sand; i++)
   {
     compra = 1;
-    
+
     if(num_sand > 1)
     {
       printf("\nHora de começar a compra de seu Sanduíche %d (novamente, digitar 0 em qualquer passo irá cancelar a compra)!\n\n", i);
@@ -71,8 +71,7 @@ float compra_sanduiche(int* quant, Produto produtos[], int tam, Cliente* cliente
       }
 
       printf("\t\n\nSEGUNDO PASSO:\n");
-      //antes printf("Escolha o tipo de pão do seu sanduíche!");
-      printf("Escolha o tipo de pão do seu sanduíche!\n");
+      printf("Escolha o tipo de pão do seu sanduíche!");
 
       //Impressão das Opções de Pão
       for(int i = 0; i < num; i++)
@@ -107,15 +106,35 @@ float compra_sanduiche(int* quant, Produto produtos[], int tam, Cliente* cliente
           {
             if(escolha == produtos[i].id)
             {
-              if(produtos[i].qtd > 0)
+              if(sanduiche.tamanhopao == 15)
               {
-                sanduiche.pao = produtos[i];
-                ok = 1;
-                break;
+                if(produtos[i].qtd > 0)
+                {
+                  sanduiche.pao = produtos[i];
+                  ok = 1;
+                  break;
+                }
+                else
+                {
+                  esgotado = 1;
+                }
               }
-              else
+              else if(sanduiche.tamanhopao == 30)
               {
-                esgotado = 1;
+                if(produtos[i].qtd > 1)
+                {
+                  sanduiche.pao = produtos[i];
+                  ok = 1;
+                  break;
+                }
+                else if(produtos[i].qtd == 1)
+                {
+                  esgotado = 2;
+                }
+                else
+                {
+                  esgotado = 1;
+                }
               }
             }
           }
@@ -126,6 +145,11 @@ float compra_sanduiche(int* quant, Produto produtos[], int tam, Cliente* cliente
           if(esgotado == 1)
           {
             printf("\nProduto esgotado. Por favor, escolha outra opção.\n\n");
+            esgotado = 0;
+          }
+          else if(esgotado == 2)
+          {
+            printf("Há apenas uma unidade desse produto. Por favor, escolha outra opção.\n\n");
             esgotado = 0;
           }
           else
@@ -141,8 +165,7 @@ float compra_sanduiche(int* quant, Produto produtos[], int tam, Cliente* cliente
       }
 
       printf("\t\n\nTERCEIRO PASSO:\n");
-      //antes printf("Escolha o recheio do seu sanduíche!");
-      printf("Escolha o recheio do seu sanduíche!\n");
+      printf("Escolha o recheio do seu sanduíche!");
 
       //Impressão das Opções de Recheio
       for(int i = 0; i < num; i++)
@@ -177,19 +200,35 @@ float compra_sanduiche(int* quant, Produto produtos[], int tam, Cliente* cliente
           {
             if(escolha == produtos[i].id)
             {
-              if(produtos[i].qtd > 0)
+              if(sanduiche.tamanhopao == 15)
               {
-                sanduiche.recheio = produtos[i];
-                //antes produtos[i].qtd = produtos[i].qtd - 1;
-                //antes produtos[i].vendidos = produtos[i].vendidos + 1;
-                //antes produtos[i].totalv = produtos[i].totalv + produtos[i].valorv;
-                //JOSEMAR - retirei isso do teu código porque, do jeito que está, a compra é contabilizada mesmo que o cliente desista dela.
-                ok = 1;
-                break;
+                if(produtos[i].qtd > 0)
+                {
+                  sanduiche.recheio = produtos[i];
+                  ok = 1;
+                  break;
+                }
+                else
+                {
+                  esgotado = 1;
+                }
               }
-              else
+              else if(sanduiche.tamanhopao == 30)
               {
-                esgotado = 1;
+                if(produtos[i].qtd > 1)
+                {
+                  sanduiche.recheio = produtos[i];
+                  ok = 1;
+                  break;
+                }
+                else if(produtos[i].qtd == 1)
+                {
+                  esgotado = 2;
+                }
+                else
+                {
+                  esgotado = 1;
+                }
               }
             }
           }
@@ -200,6 +239,11 @@ float compra_sanduiche(int* quant, Produto produtos[], int tam, Cliente* cliente
           if(esgotado == 1)
           {
             printf("\nProduto esgotado. Por favor, escolha outra opção.\n\n");
+            esgotado = 0;
+          }
+          else if(esgotado == 2)
+          {
+            printf("Há apenas uma unidade desse produto. Por favor, escolha outra opção.\n\n");
             esgotado = 0;
           }
           else
@@ -215,8 +259,7 @@ float compra_sanduiche(int* quant, Produto produtos[], int tam, Cliente* cliente
       }
 
       printf("\t\n\nQUARTO PASSO:\n");
-      //antes printf("Escolha o tipo de queijo do seu sanduíche!");
-      printf("Escolha o tipo de queijo do seu sanduíche!\n");
+      printf("Escolha o tipo de queijo do seu sanduíche!");
 
       //Impressão das Opções de Queijo
       for(int i = 0; i < num; i++)
@@ -251,15 +294,35 @@ float compra_sanduiche(int* quant, Produto produtos[], int tam, Cliente* cliente
           {
             if(escolha == produtos[i].id)
             {
-              if(produtos[i].qtd > 0)
+              if(sanduiche.tamanhopao == 15)
               {
-                sanduiche.queijos = produtos[i];
-                ok = 1;
-                break;
+                if(produtos[i].qtd > 0)
+                {
+                  sanduiche.queijos = produtos[i];
+                  ok = 1;
+                  break;
+                }
+                else
+                {
+                  esgotado = 1;
+                }
               }
-              else
+              else if(sanduiche.tamanhopao == 30)
               {
-                esgotado = 1;
+                if(produtos[i].qtd > 1)
+                {
+                  sanduiche.queijos = produtos[i];
+                  ok = 1;
+                  break;
+                }
+                else if(produtos[i].qtd == 1)
+                {
+                  esgotado = 2;
+                }
+                else
+                {
+                  esgotado = 1;
+                }
               }
             }
           }
@@ -270,6 +333,11 @@ float compra_sanduiche(int* quant, Produto produtos[], int tam, Cliente* cliente
           if(esgotado == 1)
           {
             printf("\nProduto esgotado. Por favor, escolha outra opção.\n\n");
+            esgotado = 0;
+          }
+          else if(esgotado == 2)
+          {
+            printf("Há apenas uma unidade desse produto. Por favor, escolha outra opção.\n\n");
             esgotado = 0;
           }
           else
@@ -285,8 +353,7 @@ float compra_sanduiche(int* quant, Produto produtos[], int tam, Cliente* cliente
       }
 
       printf("\t\n\nQUINTO PASSO:\n");
-      //antes printf("Escolha o tipo de molho do seu sanduíche!");
-      printf("Escolha o tipo de molho do seu sanduíche!\n");
+      printf("Escolha o tipo de molho do seu sanduíche!");
 
       //Impressão das Opções de Molho
       for(int i = 0; i < num; i++)
@@ -321,15 +388,35 @@ float compra_sanduiche(int* quant, Produto produtos[], int tam, Cliente* cliente
           {
             if(escolha == produtos[i].id)
             {
-              if(produtos[i].qtd > 0)
+              if(sanduiche.tamanhopao == 15)
               {
-                sanduiche.molho = produtos[i];
-                ok = 1;
-                break;
+                if(produtos[i].qtd > 0)
+                {
+                  sanduiche.molho = produtos[i];
+                  ok = 1;
+                  break;
+                }
+                else
+                {
+                  esgotado = 1;
+                }
               }
-              else
+              else if(sanduiche.tamanhopao == 30)
               {
-                esgotado = 1;
+                if(produtos[i].qtd > 1)
+                {
+                  sanduiche.molho = produtos[i];
+                  ok = 1;
+                  break;
+                }
+                else if(produtos[i].qtd == 1)
+                {
+                  esgotado = 2;
+                }
+                else
+                {
+                  esgotado = 1;
+                }
               }
             }
           }
@@ -342,105 +429,9 @@ float compra_sanduiche(int* quant, Produto produtos[], int tam, Cliente* cliente
             printf("\nProduto esgotado. Por favor, escolha outra opção.\n\n");
             esgotado = 0;
           }
-          else
+          else if(esgotado == 2)
           {
-            printf("\nComando inválido. Por favor, insira um dos números indicados.\n\n");
-          }
-        }
-        else if(ok == 1)
-        {
-          ok = 0;
-          break;
-        }
-      }
-
-      printf("\t\n\nSEXTO PASSO:\n");
-      printf("Escolha as verduras que colocará em seu sanduíche (no máximo 3 tipos)!");
-
-      //Impressão das Opções de Verdura
-      for(int i = 0; i < num; i++)
-      {
-        if(produtos[i].tipo == 5)
-        { 
-          printf("%d - %s", produtos[i].id, produtos[i].nome);
-
-          if(produtos[i].qtd <= 0)
-          {
-            printf(" (Esgotado)");
-          }
-
-          printf("\n");
-        }
-      }
-
-      //Escolha das Verduras
-
-      int continuar = 0;
-
-      while(1)
-      {
-        scanf(" %d", &escolha);
-
-        if(escolha == 0)
-        {
-          printf("Agradecemos pela preferência!");
-          return 0;
-        }
-
-        for(int i = 0; i < num; i++)
-        {
-          if(produtos[i].tipo == 5)
-          {
-            if(escolha == produtos[i].id)
-            {
-              if(produtos[i].qtd > 0)
-              {
-                sanduiche.salada[verduras] = produtos[i];
-                verduras += 1;
-
-                if((3 - verduras) > 0)
-                {
-                  printf("\nDeseja pôr mais alguma verdura? (Você ainda pode colocar mais %d!)\n\n", (3 - verduras));
-                  printf("1 - Sim\n2 - Não\n\n");
-                  while(1)
-                  {
-                    scanf(" %d", &escolha);
-
-                    if(escolha == 1)
-                    {
-                      continuar = 1;
-                      break;
-                    }
-                    else if(escolha == 2)
-                    {
-                      ok = 1;
-                      break;
-                    }
-                    else
-                    {
-                      printf("\nComando inválido. Por favor, insira um dos números indicados.\n\n");
-                    }
-                  }
-                }
-              }
-              else
-              {
-                esgotado = 1;
-              }
-            }
-          }
-        }
-
-        if(ok == 0)
-        {
-          if(continuar == 1)
-          {
-            continuar = 0;
-            printf("\nEscolha a próxima verdura!\n\n");
-          }
-          else if(esgotado == 1)
-          {
-            printf("\nProduto esgotado. Por favor, escolha outra opção.\n\n");
+            printf("Há apenas uma unidade desse produto. Por favor, escolha outra opção.\n\n");
             esgotado = 0;
           }
           else
@@ -452,6 +443,138 @@ float compra_sanduiche(int* quant, Produto produtos[], int tam, Cliente* cliente
         {
           ok = 0;
           break;
+        }
+      }
+
+      int sim;
+
+      printf("\nVocê deseja adicionar verduras ao seu Sanduíche?\n\n1 - Sim\n2 - Não");
+
+      while(1)
+      {
+        scanf(" %d", &escolha);
+
+        if(escolha == 1)
+        {
+          sim = 1;
+          break;
+        }
+        else if(escolha == 2)
+        {
+          sim = 0;
+          break;
+        }
+        else
+        {
+          printf("\nComando inválido, por favor insira um dos números indicados.\n\n");
+        }
+      }
+
+      while(sim == 1)
+      {
+        printf("\t\n\nSEXTO PASSO:\n");
+        printf("Escolha as verduras que colocará em seu sanduíche (no máximo 3 tipos)!");
+
+        //Impressão das Opções de Verdura
+        for(int i = 0; i < num; i++)
+        {
+          if(produtos[i].tipo == 5)
+          { 
+            printf("%d - %s", produtos[i].id, produtos[i].nome);
+
+            if(produtos[i].qtd <= 0)
+            {
+              printf(" (Esgotado)");
+            }
+
+            printf("\n");
+          }
+        }
+
+        //Escolha das Verduras
+
+        int continuar = 0;
+
+        while(1)
+        {
+          scanf(" %d", &escolha);
+
+          if(escolha == 0)
+          {
+            printf("Agradecemos pela preferência!");
+            return 0;
+          }
+
+          for(int i = 0; i < num; i++)
+          {
+            if(produtos[i].tipo == 5)
+            {
+              if(escolha == produtos[i].id)
+              {
+                if(produtos[i].qtd > 0)
+                {
+                  sanduiche.salada[verduras] = produtos[i];
+                  verduras += 1;
+
+                  if((3 - verduras) > 0)
+                  {
+                    printf("\nDeseja pôr mais alguma verdura? (Você ainda pode colocar mais %d!)\n\n", (3 - verduras));
+                    printf("1 - Sim\n2 - Não\n\n");
+                    while(1)
+                    {
+                      scanf(" %d", &escolha);
+
+                      if(escolha == 1)
+                      {
+                        continuar = 1;
+                        break;
+                      }
+                      else if(escolha == 2)
+                      {
+                        ok = 1;
+                        break;
+                      }
+                      else
+                      {
+                        printf("\nComando inválido. Por favor, insira um dos números indicados.\n\n");
+                      }
+                    }
+                  }
+                  else if(verduras == 3)
+                  {
+                    ok = 1;
+                  }
+                }
+                else
+                {
+                  esgotado = 1;
+                }
+              }
+            }
+          }
+
+          if(ok == 0)
+          {
+            if(continuar == 1)
+            {
+              continuar = 0;
+              printf("\nEscolha a próxima verdura!\n\n");
+            }
+            else if(esgotado == 1)
+            {
+              printf("\nProduto esgotado. Por favor, escolha outra opção.\n\n");
+              esgotado = 0;
+            }
+            else
+            {
+              printf("\nComando inválido. Por favor, insira um dos números indicados.\n\n");
+            }
+          }
+          else if(ok == 1)
+          {
+            ok = 0;
+            break;
+          }
         }
       }
 
@@ -552,24 +675,45 @@ float compra_sanduiche(int* quant, Produto produtos[], int tam, Cliente* cliente
         }
       }
     }
-    
+
     if(compra == 0)
     {
-      produtos[sanduiche.pao.id -1].qtd -= 1;
-      produtos[sanduiche.pao.id -1].vendidos += 1;
-      produtos[sanduiche.pao.id -1].totalv += sanduiche.pao.valorv;
+      if(sanduiche.tamanhopao == 15)
+      {
+        produtos[sanduiche.pao.id -1].qtd -= 1;
+        produtos[sanduiche.pao.id -1].vendidos += 1;
+        produtos[sanduiche.pao.id -1].totalv += sanduiche.pao.valorv;
 
-      produtos[sanduiche.recheio.id -1].qtd -= 1;
-      produtos[sanduiche.recheio.id -1].vendidos += 1;
-      produtos[sanduiche.recheio.id -1].totalv += sanduiche.recheio.valorv;
+        produtos[sanduiche.recheio.id -1].qtd -= 1;
+        produtos[sanduiche.recheio.id -1].vendidos += 1;
+        produtos[sanduiche.recheio.id -1].totalv += sanduiche.recheio.valorv;
 
-      produtos[sanduiche.molho.id -1].qtd -= 1;
-      produtos[sanduiche.molho.id -1].vendidos += 1;
-      produtos[sanduiche.molho.id -1].totalv += sanduiche.molho.valorv;
+        produtos[sanduiche.molho.id -1].qtd -= 1;
+        produtos[sanduiche.molho.id -1].vendidos += 1;
+        produtos[sanduiche.molho.id -1].totalv += sanduiche.molho.valorv;
 
-      produtos[sanduiche.queijos.id -1].qtd -= 1;
-      produtos[sanduiche.queijos.id -1].vendidos += 1;
-      produtos[sanduiche.queijos.id -1].totalv += sanduiche.queijos.valorv;
+        produtos[sanduiche.queijos.id -1].qtd -= 1;
+        produtos[sanduiche.queijos.id -1].vendidos += 1;
+        produtos[sanduiche.queijos.id -1].totalv += sanduiche.queijos.valorv;
+      }
+      else if(sanduiche.tamanhopao == 30)
+      {
+        produtos[sanduiche.pao.id -1].qtd -= 2;
+        produtos[sanduiche.pao.id -1].vendidos += 2;
+        produtos[sanduiche.pao.id -1].totalv += 2*sanduiche.pao.valorv;
+
+        produtos[sanduiche.recheio.id -1].qtd -= 2;
+        produtos[sanduiche.recheio.id -1].vendidos += 2;
+        produtos[sanduiche.recheio.id -1].totalv += 2*sanduiche.recheio.valorv;
+
+        produtos[sanduiche.molho.id -1].qtd -= 2;
+        produtos[sanduiche.molho.id -1].vendidos += 2;
+        produtos[sanduiche.molho.id -1].totalv += 2*sanduiche.molho.valorv;
+
+        produtos[sanduiche.queijos.id -1].qtd -= 2;
+        produtos[sanduiche.queijos.id -1].vendidos += 2;
+        produtos[sanduiche.queijos.id -1].totalv += 2*sanduiche.queijos.valorv;
+      }
 
       for(int i = 0; i < verduras; i++)
       {
