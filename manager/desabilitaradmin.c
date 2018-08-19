@@ -7,6 +7,8 @@ void AdminDisable(int ind_admins, Admin admins[ind_admins]){
 
   do{
   if(search != -1){
+    printf("Admin encontrado\n");
+    printf("Nome: %s\nIdade: %i\nCPF: %s\nStatus: %i\n", admins[search].dados.nome, admins[search].dados.idade, admins[search].dados.cpf, admins[search].dados.status);
     printf("Deseja realmente desabilitar esse administrador?\n");
     printf("1 - Sim\n");
     printf("2 - Não\n");
