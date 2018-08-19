@@ -86,3 +86,89 @@ void alteracao_salario(float* percentual)
   *(percentual) = percentsalario;
   printf("Salario modificado\n");
 }
+
+//ALTERAÇÕES PRA BUSCAR LOGIN, BUSCAR SENHA E A PARTE DE LOGIN, CONSIDERANDO OS ADMINS:
+
+/*int buscar_login(int quant_clientes, int quant_admins, Cliente clientes[], Admin admins[], char login[])
+{
+  for(int cont=0; cont<quant_clientes; cont++)
+  {
+    if(strcmp(login, clientes[cont].login_password.login)==0)
+    {
+      return 1;
+    }
+  }
+
+  for(int cont=0; cont<quant_admins; cont++)
+  {
+    if(strcmp(login, admins[cont].login_password.login)==0)
+    {
+      return 2;
+    }
+  }
+  
+  return -1;
+}
+
+int buscar_password(int quant_clientes, int quant_admins, Cliente clientes[], Admin admins[], char password[], char login[])
+{
+  int check = buscar_login(quant_clientes, quant_admins, clientes, admins, login);
+
+  if(check == 1)
+  {
+    for(int cont = 0; cont < quant_clientes; cont++)
+    {
+      if(strcmp(password, clientes[cont].login_password.password) == 0)
+      {
+        return 1;
+      }
+    }
+    return -1;
+  }
+  if(check == 2)
+  {
+    for(int cont = 0; cont < quant_admins; cont++)
+    {
+      if(strcmp(password, admins[cont].login_password.password) == 0)
+      {
+        return 2;
+      }
+    }
+    return -1;
+  }
+  else
+  {
+    return -1;
+  }
+}
+
+int login_function(int quant_clientes, int quant_admins, Cliente clientes[], Admin admins[])
+{
+  char login[30], password[9];
+  int tam, erro = 0;
+
+  printf("\nDigite o seu Nome de Usuário:\n\n");
+  fgets(login, 30, stdin);
+  tam = strlen(login);
+  login[tam-1] = '\0';
+  
+  printf("\nDigite a sua Senha:\n\n");
+  fgets(password, 9, stdin);
+  tam = strlen(password);
+  password[tam-1] = '\0';
+
+  int check = buscar_password(quant_clientes, quant_admins, clientes, admins, password, login);
+
+  if(check == 1)
+  {
+    return 1; //Login e Senha corretos (CLIENTE)
+  }
+  else if(check == 2)
+  {
+    return 2; //Login e Senha corretos (ADMIN)
+  }
+  else
+  {
+    return -1; //Dados incorretos
+  }
+}*/
