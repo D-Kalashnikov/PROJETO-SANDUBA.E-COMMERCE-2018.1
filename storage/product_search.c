@@ -1,4 +1,4 @@
-void product_search(){
+void product_search(int ind_tprodutos, Produto produtos[ind_tprodutos]){
   readStorageDB("storageDB.txt", produtos, ind_tprodutos);
   
   char search[30];
