@@ -21,6 +21,7 @@ void AdminEnabled(int ind_admins, Admin admins[ind_admins]){
         
         else{
           printf("Admin já está disponivel!\n");
+          flag = 1;
         }
       }
 
