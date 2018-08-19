@@ -14,8 +14,15 @@ void AdminDisable(int ind_admins, Admin admins[ind_admins]){
     printf("2 - Não\n");
     scanf("%i", &choice);
       if(choice == 1){
+        if(admins[search].dados.status != 7){
         admins[search].dados.status = 7;
         flag = 1;
+        }
+        
+        else{
+          printf("Admin já desabilitado!\n");
+          flag = 1;
+        }
       }
 
       else if(choice == 2){
