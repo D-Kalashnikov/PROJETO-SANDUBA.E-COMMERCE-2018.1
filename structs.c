@@ -60,7 +60,7 @@ typedef struct{
 typedef struct{
 	Pessoa dados;
 	Login_password login_password;
-}Admin
+}Admin;
 
 typedef struct{
 	Pessoa pessoa;
