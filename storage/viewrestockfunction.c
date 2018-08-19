@@ -1,4 +1,4 @@
-void restockfunctional(){
+void restockfunctional(int ind_tprodutos, Produto produtos[ind_tprodutos]){
   readStorageDB("storageDB.txt", produtos, ind_tprodutos);
 
   int aux_v=0;
@@ -23,6 +23,7 @@ void restockfunctional(){
 		}
 	}
   }
+	
    for(i = 0; i < ind_tprodutos; i++){
     printf("Quantidade em estoque:\n");
     printf("ID: %i\tNome:%s\tItens em estoque:%i\n",produtos[i].id,produtos[i].nome, produtos[i].qtd);
