@@ -1,7 +1,7 @@
-void restock(){
+void restock(int ind_tprodutos, Produto produtos[ind_tprodutos]){
   readStorageDB("storageDB.txt", produtos, ind_tprodutos);
 
-  restockfunctional();
+  restockfunctional(ind_tprodutos, produtos);
   int id_toverify;
   int qtd_toadd;
 
