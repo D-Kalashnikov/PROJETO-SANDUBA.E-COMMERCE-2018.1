@@ -22,7 +22,7 @@ int menu_alterar_prod()
     printf("2-tipo do produto\n");
     printf("3-valor de compra\n");
     printf("4-valor de venda\n");
-    printf("5-valores de compra e venda");
+    printf("5-valores de compra e venda\n");//alterar aqui
     printf("6-desistir da alteração\n");
     scanf("%i", &menu);
     getchar();
@@ -77,11 +77,11 @@ void alterar_prod(Produto produto[], int qte_prod_cad,char nome[30])
     {
       do
       {
-        printf("Digite o novo tipo do produto: 1-pao, 2-recheio, 3-molho, 4-queijo, 5-salada\n");
+        printf("Digite o novo tipo do produto: 1-pao, 2-recheio, 3-queijo, 4-molho, 5-vegetal\n");
         scanf("%i", &produto[indice].tipo);
         getchar();
       }while(produto[indice].tipo<1 || produto[indice].tipo>5);
-      
+      //alterar aqui
     }
 
     else if(menu==3)
@@ -131,10 +131,11 @@ void cadastrar_prod(Produto produto[], int tam, int* pqte_prod_cad)
     strcpy(produto[*pqte_prod_cad].nome, nome_teste);
     do
     {
-    printf("Digite o tipo do produto: 1-pao, 2-recheio, 3-molho, 4-queijo, 5-salada\n");
+    printf("Digite o tipo do produto: 1-pao, 2-recheio, 3-queijo, 4-molho, 5-vegetal\n");
     scanf("%i", &produto[*pqte_prod_cad].tipo);
     getchar();
     }while(produto[*pqte_prod_cad].tipo<1 || produto[*pqte_prod_cad].tipo>5);
+    //alterar aqui
     
     printf("Digite o valor da compra.\n");
     scanf("%f", &produto[*pqte_prod_cad].valorc);
@@ -157,7 +158,6 @@ void cadastrar_prod(Produto produto[], int tam, int* pqte_prod_cad)
     printf("Não foi possível realizar o cadastro. Produto já cadastrado!\n");
   }
 }
-
 void imprimir_prod(Produto produto[], int i)
 {
   printf("ID - %i\n", produto[i].id);
@@ -279,15 +279,4 @@ void gerenciar_produto(Produto produto [], int tam, int* pqte_prod_cad, float* p
       comprar_prod(produto, *pqte_prod_cad, psaldo_bancario);
     }
   }while(menu!=6);
-}
-
-
-void main()
-{
-  Produto produto[100]; 
-  int qte_prod_cad = 0;
-  float saldo_bancario = 10000 - 500 - 500 -2000; //investimento inicial - frete - manutencao do site - salario
-  
-  gerenciar_produto(produto, 100, &qte_prod_cad, &saldo_bancario);
-  
 }
