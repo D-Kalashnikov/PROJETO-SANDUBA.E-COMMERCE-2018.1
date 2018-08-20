@@ -145,7 +145,7 @@ int buscar_password(int quant_clientes, int quant_admins, Cliente clientes[], Ad
 int login_function(int quant_clientes, int quant_admins, Cliente clientes[], Admin admins[])
 {
   char login[30], password[9];
-  int tam, erro = 0;
+  int tam;
 
   printf("\nDigite o seu Nome de Usuário:\n\n");
   fgets(login, 30, stdin);
