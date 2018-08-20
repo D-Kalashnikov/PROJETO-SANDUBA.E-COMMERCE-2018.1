@@ -65,6 +65,7 @@ float buyRecommended(int clientelogon, int ind_clientes, Cliente clientes[ind_cl
         produtos[clientes[clientelogon].ultimo_sanduiche.salada[i].id -1].totalv += ultimo_sanduiche.salada[i].valorv;
       }
       //
+      (*clientes[clientelogon]).compras_realizadas++;
       somatorio = ultimo_sanduiche.preco;
       return somatorio;
     }
