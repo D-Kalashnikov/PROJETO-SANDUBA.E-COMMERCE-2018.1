@@ -1,8 +1,27 @@
-float compra_sanduiche(Produto produtos[], int tam, Cliente* cliente, float* psaldo_bancario)
+void impressao_prodtipo(Produto produto[], int qte_prod_cad, int tipo_teste)
 {
-  int verduras = 0, num_sand, compra = 1, ok = 0, escolha, esgotado = 0, num = tam;
+  for(int i=0; i<qte_prod_cad;i++)
+  {
+    if(produto[i].tipo==tipo_teste)
+    {
+      printf("%d - %s", produto[i].id, produto[i].nome);
+
+       if(produto[i].qtd <= 0)
+        {
+          printf(" (Esgotado)");
+        }
+      printf("\n");
+    } 
+  }
+}
+
+
+float compra_sanduiche(Produto produtos[], int num, Cliente* cliente, float* psaldo_bancario)
+{
+  int verduras = 0, num_sand, compra = 1, ok = 0, escolha, esgotado = 0;
   float somatorio = 0;
   Sanduiche sanduiche;
+  int verif_qte;
 
   printf("Antes de tudo, por favor, digite o número de sanduíches que você deseja comprar (digitar 0 irá cancelar a compra):");
 
@@ -74,20 +93,7 @@ float compra_sanduiche(Produto produtos[], int tam, Cliente* cliente, float* psa
       printf("Escolha o tipo de pão do seu sanduíche!\n");
 
       //Impressão das Opções de Pão
-      for(int i = 0; i < num; i++)
-      {
-        if(produtos[i].tipo == 1)
-        { 
-          printf("%d - %s", produtos[i].id, produtos[i].nome);
-
-          if(produtos[i].qtd <= 0)
-          {
-            printf(" (Esgotado)");
-          }
-
-          printf("\n");
-        }
-      }
+      impressao_prodtipo(produtos, num , 1);
 
       //Escolha do Pão
       while(1)
@@ -168,20 +174,7 @@ float compra_sanduiche(Produto produtos[], int tam, Cliente* cliente, float* psa
       printf("Escolha o recheio do seu sanduíche!\n");
 
       //Impressão das Opções de Recheio
-      for(int i = 0; i < num; i++)
-      {
-        if(produtos[i].tipo == 2)
-        { 
-          printf("%d - %s", produtos[i].id, produtos[i].nome);
-
-          if(produtos[i].qtd <= 0)
-          {
-            printf(" (Esgotado)");
-          }
-
-          printf("\n");
-        }
-      }
+       impressao_prodtipo(produtos, num , 2);
 
       //Escolha do Recheio
       while(1)
@@ -262,20 +255,7 @@ float compra_sanduiche(Produto produtos[], int tam, Cliente* cliente, float* psa
       printf("Escolha o tipo de queijo do seu sanduíche!\n");
 
       //Impressão das Opções de Queijo
-      for(int i = 0; i < num; i++)
-      {
-        if(produtos[i].tipo == 3)
-        { 
-          printf("%d - %s", produtos[i].id, produtos[i].nome);
-
-          if(produtos[i].qtd <= 0)
-          {
-            printf(" (Esgotado)");
-          }
-
-          printf("\n");
-        }
-      }
+      impressao_prodtipo(produtos, num , 3);
 
       //Escolha do Queijo
       while(1)
@@ -356,20 +336,7 @@ float compra_sanduiche(Produto produtos[], int tam, Cliente* cliente, float* psa
       printf("Escolha o tipo de molho do seu sanduíche!\n");
 
       //Impressão das Opções de Molho
-      for(int i = 0; i < num; i++)
-      {
-        if(produtos[i].tipo == 4)
-        { 
-          printf("%d - %s", produtos[i].id, produtos[i].nome);
-
-          if(produtos[i].qtd <= 0)
-          {
-            printf(" (Esgotado)");
-          }
-
-          printf("\n");
-        }
-      }
+      impressao_prodtipo(produtos, num , 4);
 
       //Escolha do Molho
       while(1)
@@ -476,20 +443,7 @@ float compra_sanduiche(Produto produtos[], int tam, Cliente* cliente, float* psa
         printf("Escolha as verduras que colocará em seu sanduíche (no máximo 3 tipos)!\n");
 
         //Impressão das Opções de Verdura
-        for(int i = 0; i < num; i++)
-        {
-          if(produtos[i].tipo == 5)
-          { 
-            printf("%d - %s", produtos[i].id, produtos[i].nome);
-
-            if(produtos[i].qtd <= 0)
-            {
-              printf(" (Esgotado)");
-            }
-
-            printf("\n");
-          }
-        }
+        impressao_prodtipo(produtos, num , 5);
 
         //Escolha das Verduras
 
@@ -614,7 +568,7 @@ float compra_sanduiche(Produto produtos[], int tam, Cliente* cliente, float* psa
           printf("%s", sanduiche.salada[i].nome);
         }
       }
-      printf("\nPreço: R$ %f", sanduiche.preco);
+      printf("\nPreço: R$ %.2f", sanduiche.preco);
 
       printf("\n\nDeseja comprar esse Sanduíche?\n\n1 - Sim\n2 - Não");
 
@@ -809,7 +763,7 @@ float compra_sanduiche(Produto produtos[], int tam, Cliente* cliente, float* psa
   }
   cliente->ultimo_sanduiche = sanduiche;
 
-  printf("\nO valor total de sua compra foi: R$ %f\n\nAgradecemos pela preferência!", somatorio);
+  printf("\nO valor total de sua compra foi: R$ %.2f\n\nAgradecemos pela preferência!", somatorio);
 
   return somatorio;
 }
