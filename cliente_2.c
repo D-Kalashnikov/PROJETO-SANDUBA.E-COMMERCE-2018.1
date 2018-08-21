@@ -9,24 +9,18 @@ void limpar_buffer() // deixei essa função sem ser utilizada no código visto 
 }
 
 //BUSCAR VAZIO
-int buscar_vazio(int quant, char palavra[])
+int buscar_vazio(char palavra[]) //A string deve ter seu tamanho "ajustado" antes de ser mandada pra essa função
 {
-  int cont, cont2=0;
-  for(cont = 0; cont<quant; cont++)
+  int cont = 0;
+
+  for(int i = 0; palavra[i] != '\0'; i++)
   {
-    if(palavra[cont] == 32)
+    if(palavra[i] != 32)
     {
-      cont2 = cont2 + 1;
+      return -1;
     }
   }
-  if(cont2==quant)
-  {
-    return -1;
-  }
-  else
-  {
-    return 1;
-  }
+  return 1;
 }
 
 
