@@ -16,7 +16,7 @@ void impressao_prodtipo(Produto produto[], int qte_prod_cad, int tipo_teste)
 }
 
 
-float compra_sanduiche(Produto produtos[], int num, Cliente* cliente, float* psaldo_bancario)
+float compra_sanduiche(Produto produtos[], int num, int posicao, Cliente cliente[], float* psaldo_bancario)
 {
   int verduras = 0, num_sand, compra = 1, ok = 0, escolha, esgotado = 0;
   float somatorio = 0;
@@ -761,7 +761,7 @@ float compra_sanduiche(Produto produtos[], int num, Cliente* cliente, float* psa
     }
 
   }
-  cliente->ultimo_sanduiche = sanduiche;
+  cliente[posicao].ultimo_sanduiche = sanduiche;
 
   printf("\nO valor total de sua compra foi: R$ %.2f\n\nAgradecemos pela preferência!", somatorio);
 
