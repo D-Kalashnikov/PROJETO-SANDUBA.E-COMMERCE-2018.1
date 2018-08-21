@@ -110,7 +110,7 @@ void alteracao_salario(float* percentual)
   return -1;
 }
 
-int buscar_password(int quant_clientes, int quant_admins, Cliente clientes[], Admin admins[], char password[], char login[])
+int buscar_password(int quant_clientes, int quant_admins, int* posicao, Cliente clientes[], Admin admins[], char password[], char login[])
 {
   int check = buscar_login(quant_clientes, quant_admins, clientes, admins, login);
 
@@ -120,6 +120,7 @@ int buscar_password(int quant_clientes, int quant_admins, Cliente clientes[], Ad
     {
       if(strcmp(password, clientes[cont].login_password.password) == 0)
       {
+        *posicao = cont;
         return 1;
       }
     }
@@ -131,6 +132,7 @@ int buscar_password(int quant_clientes, int quant_admins, Cliente clientes[], Ad
     {
       if(strcmp(password, admins[cont].login_password.password) == 0)
       {
+        *posicao = cont;
         return 2;
       }
     }
@@ -142,7 +144,7 @@ int buscar_password(int quant_clientes, int quant_admins, Cliente clientes[], Ad
   }
 }
 
-int login_function(int quant_clientes, int quant_admins, Cliente clientes[], Admin admins[],int* pos_cliente)
+int login_function(int quant_clientes, int quant_admins, int* posicao, Cliente clientes[], Admin admins[])
 {
   char login[30], password[9];
   int tam;
@@ -152,14 +154,12 @@ int login_function(int quant_clientes, int quant_admins, Cliente clientes[], Adm
   tam = strlen(login);
   login[tam-1] = '\0';
   
-  *pos_cliente = buscar_login_cliente(clientes, quant_clientes, login);
-  
   printf("\nDigite a sua Senha:\n\n");
   fgets(password, 9, stdin);
   tam = strlen(password);
   password[tam-1] = '\0';
 
-  int check = buscar_password(quant_clientes, quant_admins, clientes, admins, password, login);
+  int check = buscar_password(quant_clientes, quant_admins, posicao, clientes, admins, password, login);
 
   if(check == 1)
   {
@@ -167,7 +167,14 @@ int login_function(int quant_clientes, int quant_admins, Cliente clientes[], Adm
   }
   else if(check == 2)
   {
-    return 2; //Login e Senha corretos (ADMIN)
+    if(admins[*posicao].dados.status == 2)
+    {
+      return 2; //Login e Senha corretos (MASTER ADMIN)
+    }
+    else
+    {
+      return 3; //Login e Senha corretos (ADMIN)
+    }
   }
   else
   {
