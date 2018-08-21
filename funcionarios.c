@@ -142,7 +142,7 @@ int buscar_password(int quant_clientes, int quant_admins, Cliente clientes[], Ad
   }
 }
 
-int login_function(int quant_clientes, int quant_admins, Cliente clientes[], Admin admins[])
+int login_function(int quant_clientes, int quant_admins, Cliente clientes[], Admin admins[],int* pos_cliente)
 {
   char login[30], password[9];
   int tam;
@@ -151,6 +151,8 @@ int login_function(int quant_clientes, int quant_admins, Cliente clientes[], Adm
   fgets(login, 30, stdin);
   tam = strlen(login);
   login[tam-1] = '\0';
+  
+  *pos_cliente = buscar_login_cliente(clientes, quant_clientes, login);
   
   printf("\nDigite a sua Senha:\n\n");
   fgets(password, 9, stdin);
