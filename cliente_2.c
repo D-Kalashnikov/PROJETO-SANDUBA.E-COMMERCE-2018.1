@@ -9,7 +9,7 @@ void limpar_buffer() // deixei essa função sem ser utilizada no código visto 
 }
 
 //BUSCAR VAZIO
-in buscar_vazio(char palavra[]) //A string deve ter seu tamanho "ajustado" antes de ser mandada pra essa função
+int buscar_vazio(char palavra[]) //A string deve ter seu tamanho "ajustado" antes de ser mandada pra essa função
 {
   for(int i = 0; palavra[i] != '\0'; i++)
   {
