@@ -10,6 +10,9 @@ void main()
   gerenciar_produto(produto, 100, &qte_prod_cad, &saldo_bancario);
   compra_sanduiche(produto, qte_prod_cad, &cliente, &saldo_bancario);
   calculo_e_impressao_rel_fin (produto, qte_prod_cad, saldo_bancario, percentual_sal, percentual_odesp);
+  cadastro_cliente(clientes, indice_cliente,  &indice_cliente);
+  buscar_cliente(clientes, indice_cliente,  cpf);
+  remover_cliente( indice_cliente, clientes);
   
   
 }
