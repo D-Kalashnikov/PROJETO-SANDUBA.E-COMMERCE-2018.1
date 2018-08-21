@@ -52,7 +52,7 @@ int buscar_cliente(Cliente clientes[], int quant,  char cpf[13])
 
 //BUSCAR LOGIN
 //antes int buscar_login(int quant, Cliente clientes[quant], char* login)
-int buscar_login(Cliente clientes[], int quant, char login[30])
+int buscar_login_cliente(Cliente clientes[], int quant, char login[30])
 // o login não é um ponteiro. visto que ele recebe um valor que foi digitado pelo usuário e não um endereço de memória. // invertir a ordem dos argumentos para a função funcionar e tirei a variável de dentro do indice do vetor clientes
 {
   int cont;
