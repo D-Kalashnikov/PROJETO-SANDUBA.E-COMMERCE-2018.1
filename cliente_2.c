@@ -9,7 +9,7 @@ void limpar_buffer() // deixei essa função sem ser utilizada no código visto 
 }
 
 //BUSCAR VAZIO
-int buscar_vazio(char palavra[]) //A string deve ter seu tamanho "ajustado" antes de ser mandada pra essa função
+in buscar_vazio(char palavra[]) //A string deve ter seu tamanho "ajustado" antes de ser mandada pra essa função
 {
   for(int i = 0; palavra[i] != '\0'; i++)
   {
@@ -79,7 +79,7 @@ void cadastro_cliente( Cliente clientes[], int num, int* indice_cliente)
   fgets(cpf, 13, stdin);
   tam = strlen(cpf);
   cpf[tam-1] = '\0';
-  //limpar_buffer();
+  limpar_buffer();
   resp = buscar_cliente(clientes, num, cpf);
   
   
@@ -109,7 +109,7 @@ void cadastro_cliente( Cliente clientes[], int num, int* indice_cliente)
       fgets(clientes[*indice_cliente].dados.nome, 50, stdin);
       tam = strlen(clientes[*indice_cliente].dados.nome);
       clientes[*indice_cliente].dados.nome[tam-1] = '\0';
-      //limpar_buffer();
+      limpar_buffer();
 
       //IDADE
       printf("Digite a sua idade:\n");
@@ -123,7 +123,7 @@ void cadastro_cliente( Cliente clientes[], int num, int* indice_cliente)
       fgets(clientes[*indice_cliente].endereco.rua, 100, stdin);
       tam = strlen(clientes[*indice_cliente].endereco.rua);
       clientes[*indice_cliente].endereco.rua[tam-1] = '\0';
-      //limpar_buffer();
+      limpar_buffer();
 
       //NUMERO 
       printf("Digite o numero da sua casa:\n");
@@ -135,35 +135,35 @@ void cadastro_cliente( Cliente clientes[], int num, int* indice_cliente)
       fgets(clientes[*indice_cliente].endereco.complemento, 100, stdin);
       tam = strlen(clientes[*indice_cliente].endereco.complemento);
       clientes[*indice_cliente].endereco.complemento[tam-1] = '\0';
-      //limpar_buffer();
+      limpar_buffer();
 
       //BAIRRO 
       printf("Digite o bairro:\n");
       fgets(clientes[*indice_cliente].endereco.bairro, 30, stdin);
       tam = strlen(clientes[*indice_cliente].endereco.bairro);
       clientes[*indice_cliente].endereco.bairro[tam-1] = '\0';
-      //limpar_buffer();
+      limpar_buffer();
 
       //CEP 
       printf("Digite o seu CEP:\n");
       fgets(clientes[*indice_cliente].endereco.cep, 10, stdin);
       tam = strlen(clientes[*indice_cliente].endereco.cep);
       clientes[*indice_cliente].endereco.cep[tam-1] = '\0';
-      //limpar_buffer();
+      limpar_buffer();
 
       //CIDADE 
       printf("Digite a sua cidade:\n");
       fgets(clientes[*indice_cliente].endereco.cidade, 30, stdin);
       tam = strlen(clientes[*indice_cliente].endereco.cidade);
       clientes[*indice_cliente].endereco.cidade[tam-1] = '\0';
-      //limpar_buffer();
+      limpar_buffer();
 
       //ESTADO 
       printf("Digite a sigla do seu estado:\n");
       fgets(clientes[*indice_cliente].endereco.estado, 3, stdin);
       tam = strlen(clientes[*indice_cliente].endereco.estado);
       clientes[*indice_cliente].endereco.estado[tam-1] = '\0';
-      //limpar_buffer();
+      limpar_buffer();
 
       
 
@@ -177,7 +177,7 @@ void cadastro_cliente( Cliente clientes[], int num, int* indice_cliente)
         fgets(login, 30, stdin);
         tam = strlen(login);
         login[tam-1] = '\0';
-        //limpar_buffer();
+        limpar_buffer();
         resp2 = buscar_login(clientes, num, login);
         if(resp2 == -1) // a função login não estave funcionando porque dentro desse if estava resp == -1 ao invés de resp2 == -1
         {
@@ -198,7 +198,7 @@ void cadastro_cliente( Cliente clientes[], int num, int* indice_cliente)
         fgets(clientes[*indice_cliente].login_password.password, 9, stdin);
         tam = strlen(clientes[*indice_cliente].login_password.password);
         clientes[*indice_cliente].login_password.password[tam-1] = '\0';
-        //limpar_buffer();
+        limpar_buffer();
         fim = 0;
 
         //STATUS
@@ -236,7 +236,7 @@ int remover_cliente(int quant, Cliente clientes[])
   fgets(cpf, 13, stdin);
   tam = strlen(cpf);
   cpf[tam-1] = '\0';
-  //limpar_buffer();
+  limpar_buffer();
   resp = buscar_cliente(clientes, quant,  cpf);//inverti os argumentos
   if(resp !=-1)
   {
