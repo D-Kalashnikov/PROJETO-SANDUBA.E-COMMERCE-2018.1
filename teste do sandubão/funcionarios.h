@@ -60,7 +60,7 @@ int cadastrar_funcionario(int num, Funcionario funcionarios[num], int indice_fun
   //CPF
   printf("Digite o CPF:\n");
   fgets(cpf, 13, stdin);
-  limpar_buffer();
+  fflush(stdin);
   tam = strlen(cpf);
   cpf[tam-1] = '\0';
   resp = buscar_funcionario(num, funcionarios, cpf);
@@ -70,7 +70,7 @@ int cadastrar_funcionario(int num, Funcionario funcionarios[num], int indice_fun
     //NOME
     printf("Digite o nome do funcionario:\n");
     fgets(funcionarios[indice_funcionario].dados.nome, 50, stdin);
-    limpar_buffer();
+    fflush(stdin);
     tam = strlen(funcionarios[indice_funcionario].dados.nome);
     funcionarios[indice_funcionario].dados.nome[tam-1] = '\0';
       
