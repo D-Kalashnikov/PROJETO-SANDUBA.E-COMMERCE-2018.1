@@ -8,7 +8,7 @@
 
 
 
-/*//LIMPAR BUFFER
+/*//LIMPAR BUFFER deixa ela aqui! qualquer coisa tem ela
 void limpar_buffer() // deixei essa função sem ser utilizada no código visto que toda vez q ela era executada o cliente tinha que dar dois enter para avançar na sua seleção de opções.
 {
   char c;
