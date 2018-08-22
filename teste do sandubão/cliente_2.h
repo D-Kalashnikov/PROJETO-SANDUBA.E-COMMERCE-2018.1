@@ -97,7 +97,7 @@ void cadastro_cliente( Cliente clientes[], int num, int* indice_cliente)
     }
     else
     {
-      printf("Opção inválida\nTente novamente\n");
+      printf("Opção inválida.\nTente novamente.\n");
     }
   }
   resp = buscar_cliente(clientes, num, cpf);
@@ -114,7 +114,7 @@ void cadastro_cliente( Cliente clientes[], int num, int* indice_cliente)
       }
       else
       {
-        printf("Opção inválida\n");
+        printf("Opção inválida.\n");
       }
     }
     if(resp3 == 1)
@@ -136,7 +136,7 @@ void cadastro_cliente( Cliente clientes[], int num, int* indice_cliente)
         }
         else
         {
-          printf("Opção inválida\nTente novamente\n");
+          printf("Opção inválida.\nTente novamente.\n");
         }
       }
 
@@ -162,7 +162,7 @@ void cadastro_cliente( Cliente clientes[], int num, int* indice_cliente)
         }
         else
         {
-          printf("Opção inválida\nTente novamente\n");
+          printf("Opção inválida.\nTente novamente.\n");
         }
       }
 
@@ -186,7 +186,7 @@ void cadastro_cliente( Cliente clientes[], int num, int* indice_cliente)
         }
         else
         {
-          printf("Opção inválida\nTente novamente\n");
+          printf("Opção inválida.\nTente novamente.\n");
         }
       }
 
@@ -205,7 +205,7 @@ void cadastro_cliente( Cliente clientes[], int num, int* indice_cliente)
         }
         else
         {
-          printf("Opção inválida\nTente novamente\n");
+          printf("Opção inválida.\nTente novamente.\n");
         }
       }
   
@@ -224,7 +224,7 @@ void cadastro_cliente( Cliente clientes[], int num, int* indice_cliente)
         }
         else
         {
-          printf("Opção inválida\nTente novamente\n");
+          printf("Opção inválida.\nTente novamente.\n");
         }
       }
       
@@ -232,7 +232,7 @@ void cadastro_cliente( Cliente clientes[], int num, int* indice_cliente)
       //CIDADE 
       while(1)
       {
-        printf("Digite a sua cidade:\n");
+        printf("Digite a sua Cidade:\n");
         fgets(clientes[*indice_cliente].endereco.cidade, 30, stdin);
         tam = strlen(clientes[*indice_cliente].endereco.cidade);
         clientes[*indice_cliente].endereco.cidade[tam-1] = '\0';
@@ -244,14 +244,14 @@ void cadastro_cliente( Cliente clientes[], int num, int* indice_cliente)
         }
         else
         {
-          printf("Opção inválida\nTente novamente\n");
+          printf("Opção inválida.\nTente novamente.\n");
         }
       }
 
       //ESTADO 
       while(1)
       {
-        printf("Digite a sigla do seu estado:\n");
+        printf("Digite a sigla do seu Estado:\n");
         fgets(clientes[*indice_cliente].endereco.estado, 3, stdin);
         tam = strlen(clientes[*indice_cliente].endereco.estado);
         clientes[*indice_cliente].endereco.estado[tam-1] = '\0';
@@ -263,7 +263,7 @@ void cadastro_cliente( Cliente clientes[], int num, int* indice_cliente)
         }
         else
         {
-          printf("Opção inválida\nTente novamente\n");
+          printf("Opção inválida.\nTente novamente.\n");
         }
       }
   
@@ -287,19 +287,19 @@ void cadastro_cliente( Cliente clientes[], int num, int* indice_cliente)
           }
           else
           {
-            printf("Opção inválida\nTente novamente\n");
+            printf("Opção inválida.\nTente novamente.\n");
           }
         }
         resp2 = buscar_login_cliente(clientes, num, login);
         if(resp2 == -1)
         {
-          printf("Login disponivel\n");
+          printf("Login disponível.\n");
           strcpy(clientes[*indice_cliente].login_password.login, login);
           fim = 1;
         }
         else
         {
-          printf("Login nao disponivel\nTente novamente\n");
+          printf("Login não disponível.\nTente novamente.\n");
         }
       }
 
@@ -329,7 +329,7 @@ void cadastro_cliente( Cliente clientes[], int num, int* indice_cliente)
           }
           else
           {
-            printf("Opção inválida\nTente novamente\n");
+            printf("Opção inválida.\nTente novamente.\n");
           }
       }
         //STATUS
