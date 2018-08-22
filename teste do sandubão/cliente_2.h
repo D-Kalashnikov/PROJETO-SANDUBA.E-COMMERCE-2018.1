@@ -402,6 +402,13 @@ int remover_cliente(int quant, Cliente clientes[])
   }
 }
 
+//REATIVAR CLIENTE
+void reativar_cliente(Cliente clientes[], int posicao)
+{
+      clientes[posicao].dados.status = 1;
+      printf("Voce foi reativado\n");
+}
+
 
 /*//BUSCAR SENHA 
 int buscar_senha(int quant, Cliente clientes[], char password[]) 
