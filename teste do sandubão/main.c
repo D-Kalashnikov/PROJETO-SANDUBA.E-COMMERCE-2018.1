@@ -127,12 +127,13 @@ void main() {
 							StorageScreen();
 							printf("\n\n");
 							printf("1 - Visualizar Estoque\n2 - Visualizar quantidades\n3 - Visualizar produtos mais vendidos\n4 - Visualizar produtos mais comprados\n5 - Procurar produto\n")
+							gerenciar_produto(produtos, qte_prod_cad, &qte_prod_cad, &saldo_bancario);
 						}
 						
 						else if(select == '2'){
 							FinanceiroScreen();
 							printf("\n\n");
-							calculo_e_impressao_rel_fin (produto, qte_prod_cad, saldo_bancario, percentual_sal, percentual_odesp);
+							calculo_e_impressao_rel_fin (produtos, qte_prod_cad, saldo_bancario, percentual_sal, percentual_odesp);
 							printf("Pressione alguma tecla para sair.\n");
 							_getch();
 							system("cls");
@@ -163,12 +164,13 @@ void main() {
 						if(select == '1'){
 							StorageScreen();
 							printf("\n\n");
+							gerenciar_produto(produtos, qte_prod_cad, &qte_prod_cad, &saldo_bancario);
 						}
 						
 						else if(select == '2'){
 							FinanceiroScreen();
 							printf("\n\n");
-							calculo_e_impressao_rel_fin (produto, qte_prod_cad, saldo_bancario, percentual_sal, percentual_odesp);
+							calculo_e_impressao_rel_fin (produtos, qte_prod_cad, saldo_bancario, percentual_sal, percentual_odesp);
 							printf("Pressione alguma tecla para sair.\n");
 							_getch();
 							system("cls");
