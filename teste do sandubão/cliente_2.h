@@ -409,6 +409,246 @@ void reativar_cliente(Cliente clientes[], int posicao)
       printf("Voce foi reativado\n");
 }
 
+//MUDANCA DE DADOS CLIENTE
+void mudanca_cliente(int cont, Cliente clientes[], int num)
+{
+  int resp = 12;
+  int tam, vazio, fim, resp2;
+  while(resp!=0)
+  {
+     printf("Mudanca de dados:\nDseja mudar quais dados?\n0-Sair\n1-Nome\n2-Idade\n3-Rua\n4-Numero\n5-Complemento\n6-Bairro\n7-CEP\n8-Cidade\n9-Estado\n10-Login\n11-Senha\n");
+  scanf("%i", &resp);
+      //NOME 
+      if(resp == 1)
+      {
+        while(1)
+      {
+        printf("Digite o seu nome:\n");
+        fgets(clientes[cont].dados.nome, 50, stdin);
+        tam = strlen(clientes[cont].dados.nome);
+        clientes[cont].dados.nome[tam-1] = '\0';
+        fflush(stdin);
+        vazio = buscar_vazio(clientes[cont].dados.nome);
+        if(vazio != 1)
+        {
+          break;
+        }
+        else
+        {
+          printf("Opção inválida.\nTente novamente.\n");
+        }
+      }
+      }
+      else if(resp == 2)
+      {
+        //IDADE
+      printf("Digite a sua idade:\n");
+      scanf("%i", &clientes[cont].dados.idade);
+      getchar();
+      }
+      else if(resp == 3)
+      {
+        //RUA
+      while(1)
+      {
+        printf("Digite o nome da rua:\n");
+        fgets(clientes[cont].endereco.rua, 100, stdin);
+        tam = strlen(clientes[cont].endereco.rua);
+        clientes[cont].endereco.rua[tam-1] = '\0';
+        fflush(stdin);
+        vazio = buscar_vazio(clientes[cont].endereco.rua);
+        if(vazio != 1)
+        {
+          break;
+        }
+        else
+        {
+          printf("Opção inválida.\nTente novamente.\n");
+        }
+      }
+      }
+      else if(resp == 4)
+      {
+         //NUMERO 
+      printf("Digite o numero da sua casa:\n");
+      scanf("%i", &clientes[cont].endereco.numero);
+      getchar();
+      }
+      else if(resp == 5)
+      {
+        //COMPLEMENTO 
+      while(1)
+      {
+        printf("Digite o complemento:\n");
+        fgets(clientes[cont].endereco.complemento, 100, stdin);
+        tam = strlen(clientes[cont].endereco.complemento);
+        clientes[cont].endereco.complemento[tam-1] = '\0';
+        fflush(stdin);
+        vazio = buscar_vazio(clientes[cont].endereco.complemento);
+        if(vazio != 1)
+        {
+          break;
+        }
+        else
+        {
+          printf("Opção inválida.\nTente novamente.\n");
+        }
+      }
+      }
+      else if(resp == 6)
+      {
+        //BAIRRO 
+      while(1)
+      {
+         printf("Digite o bairro:\n");
+        fgets(clientes[cont].endereco.bairro, 30, stdin);
+        tam = strlen(clientes[cont].endereco.bairro);
+        clientes[cont].endereco.bairro[tam-1] = '\0';
+        fflush(stdin);
+        vazio = buscar_vazio(clientes[cont].endereco.bairro);
+        if(vazio != 1)
+        {
+          break;
+        }
+        else
+        {
+          printf("Opção inválida.\nTente novamente.\n");
+        }
+      }
+      }
+      else if(resp == 7)
+      {
+        //CEP 
+      while(1)
+      {
+        printf("Digite o seu CEP:\n");
+        fgets(clientes[cont].endereco.cep, 10, stdin);
+        tam = strlen(clientes[cont].endereco.cep);
+        clientes[cont].endereco.cep[tam-1] = '\0';
+        fflush(stdin);
+        vazio = buscar_vazio(clientes[cont].endereco.cep);
+        if(vazio != 1)
+        {
+          break;
+        }
+        else
+        {
+          printf("Opção inválida.\nTente novamente.\n");
+        }
+      }
+      }
+      else if(resp == 8)
+      {
+        //CIDADE 
+      while(1)
+      {
+        printf("Digite a sua cidade:\n");
+        fgets(clientes[cont].endereco.cidade, 30, stdin);
+        tam = strlen(clientes[cont].endereco.cidade);
+        clientes[cont].endereco.cidade[tam-1] = '\0';
+        fflush(stdin);
+        vazio = buscar_vazio(clientes[cont].endereco.cidade);
+        if(vazio != 1)
+        {
+          break;
+        }
+        else
+        {
+          printf("Opção inválida.\nTente novamente.\n");
+        }
+      }
+      }
+      else if(resp == 9)
+      {
+        //ESTADO 
+      while(1)
+      {
+        printf("Digite a sigla do seu estado:\n");
+        fgets(clientes[cont].endereco.estado, 3, stdin);
+        tam = strlen(clientes[cont].endereco.estado);
+        clientes[cont].endereco.estado[tam-1] = '\0';
+        fflush(stdin);
+        vazio = buscar_vazio(clientes[cont].endereco.estado);
+        if(vazio != 1)
+        {
+          break;
+        }
+        else
+        {
+          printf("Opção inválida.\nTente novamente.\n");
+        }
+      }
+      }
+      else if(resp == 10)
+      {
+        //LOGIN 
+      while(fim!=1)
+      {
+        char login[13];
+        while(1)
+        {
+          printf("Digite o seu login:\n");
+          fgets(login, 30, stdin);
+          tam = strlen(login);
+          login[tam-1] = '\0';
+          fflush(stdin);
+          vazio = buscar_vazio(login);
+          if(vazio != 1)
+          {
+            break;
+          }
+          else
+          {
+            printf("Opção inválida.\nTente novamente.\n");
+          }
+        }
+        resp2 = buscar_login_cliente(clientes, num, login);
+        if(resp2 == -1)
+        {
+          printf("Login disponivel\n");
+          strcpy(clientes[cont].login_password.login, login);
+          fim = 1;
+        }
+        else
+        {
+          printf("Login nao disponivel.\nTente novamente.\n");
+        }
+      }
+      }
+      else if(resp == 11)
+      {
+              //SENHA
+      while(1)
+      {
+        printf("Escolha uma senha para sua conta:\n");
+        fgets(clientes[cont].login_password.password, 9, stdin);
+        tam = strlen(clientes[cont].login_password.password);
+        clientes[cont].login_password.password[tam-1] = '\0';
+        fflush(stdin);
+        vazio = buscar_vazio(clientes[cont].login_password.password);
+          if(vazio != 1)
+          {
+            break;
+          }
+          else
+          {
+            printf("Opção inválida.\nTente novamente.\n");
+          }
+      }
+      }
+      else if(resp == 0)
+      {
+        printf("Mudanca concluida.\n");
+        break;
+      }
+      else
+      {
+        printf("Opção inválida.\nTente novamente.\n");
+      }
+
+}
+  }
+ 
 
 /*//BUSCAR SENHA 
 int buscar_senha(int quant, Cliente clientes[], char password[]) 
