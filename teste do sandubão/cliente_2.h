@@ -41,9 +41,6 @@ int buscar_vazio(int quant, char palavra[])
 
 
 //BUSCAR CLIENTE
-//antes int buscar_cliente(int quant, Cliente clientes[quant], char* cpf)
-// o cpf não é um ponteiro. visto que ele recebe um valor que foi digitado pelo usuário e não um endereço de memória. troquei a ordem dos argumentos e a forma de declarar o vetor clientes.
-
 int buscar_cliente(Cliente clientes[], int quant,  char cpf[13]){
   int cont;
   for(cont=0; cont<quant; cont++)
@@ -61,9 +58,7 @@ int buscar_cliente(Cliente clientes[], int quant,  char cpf[13]){
 }
 
 //BUSCAR LOGIN
-//antes int buscar_login(int quant, Cliente clientes[quant], char* login)
 int buscar_login_cliente(Cliente clientes[], int quant, char login[30])
-// o login não é um ponteiro. visto que ele recebe um valor que foi digitado pelo usuário e não um endereço de memória. // invertir a ordem dos argumentos para a função funcionar e tirei a variável de dentro do indice do vetor clientes
 {
   int cont;
   for(cont=0; cont<quant; cont++)
@@ -77,33 +72,38 @@ int buscar_login_cliente(Cliente clientes[], int quant, char login[30])
     }
     //antes return -1; 
   }
-  return -1; // retirei esse return -1 do local original uma vez que no cadastro do 1° cliente essa função não entra no laço for. e se os dois return estiverem no laço for a função não irá retornar nem 1 nem -1.
+  return -1; 
 }
 
 //CADASTRO CLIENTE
-//antes int cadastro_cliente(int num, Cliente clientes[num], int indice_cliente)
 void cadastro_cliente( Cliente clientes[], int num, int* indice_cliente)
-// no lugar do int coloquei o void uma vez que a função de cadastrar cliente não tem porquê retornar 1 ou -1. Esse número de retorno da função de cadastro de cliente não será utilizado para nada.
-//o indice_cliente é a variável criada no main que controla a posição onde será inserido o novo cliente, dessa forma, a função cadastro de cliente precisa do endereço de memória do indice_cliente para, assim que o próximo cliente for cadastrado, a variável indice_cliente no main ser incrementada em 1, assim, indice cliente coloquei como ponteiro
-//troquei a ordem dos argumentos e a forma de declarar o vetor clientes.
-
 {
-  int tam, resp, resp2, fim = 0, resp3;
+  int tam, resp, resp2, fim = 0, resp3, vazio;
   char cpf[13], login[30];
 
         //DADOS PESSOAIS
   //CPF 
-  printf("Digite o seu CPF:\n");
-  fgets(cpf, 13, stdin);
-  tam = strlen(cpf);
-  cpf[tam-1] = '\0';
-  fflush(stdin);
+  while(1)
+  {
+    printf("Digite o seu CPF:\n");
+    fgets(cpf, 13, stdin);
+    tam = strlen(cpf);
+    cpf[tam-1] = '\0';
+    fflush(stdin);
+    vazio = buscar_vazio(cpf);
+    if(vazio != 1)
+    {
+      break;
+    }
+    else
+    {
+      printf("Opção inválida\nTente novamente\n");
+    }
+  }
   resp = buscar_cliente(clientes, num, cpf);
-  
-  
   if(resp == -1)
   {
-    while(1) //adicionei esse laço para garantir que o cliente digite uma opção válida
+    while(1)
     {
       printf("\n\tDeseja se cadastrar?\n1-Sim\n2-Nao\n");
       scanf("%i", &resp3);
@@ -119,15 +119,26 @@ void cadastro_cliente( Cliente clientes[], int num, int* indice_cliente)
     }
     if(resp3 == 1)
     { 
-      // aonde aparecia a variável indice_cliente, coloquei o conteudo de indice_cliente, visto que indice_cliente é um ponteiro
       strcpy(clientes[*indice_cliente].dados.cpf, cpf);
       printf("\n\tDados pessoais:\n\n");
       //NOME 
-      printf("Digite o seu nome:\n");
-      fgets(clientes[*indice_cliente].dados.nome, 50, stdin);
-      tam = strlen(clientes[*indice_cliente].dados.nome);
-      clientes[*indice_cliente].dados.nome[tam-1] = '\0';
-      fflush(stdin);
+      while(1)
+      {
+        printf("Digite o seu nome:\n");
+        fgets(clientes[*indice_cliente].dados.nome, 50, stdin);
+        tam = strlen(clientes[*indice_cliente].dados.nome);
+        clientes[*indice_cliente].dados.nome[tam-1] = '\0';
+        fflush(stdin);
+        vazio = buscar_vazio(clientes[*indice_cliente].dados.nome);
+        if(vazio != 1)
+        {
+          break;
+        }
+        else
+        {
+          printf("Opção inválida\nTente novamente\n");
+        }
+      }
 
       //IDADE
       printf("Digite a sua idade:\n");
@@ -137,11 +148,23 @@ void cadastro_cliente( Cliente clientes[], int num, int* indice_cliente)
               //ENDERECO 
       printf("\tEndereco:\n\n");
       //RUA
-      printf("Digite o nome da rua:\n");
-      fgets(clientes[*indice_cliente].endereco.rua, 100, stdin);
-      tam = strlen(clientes[*indice_cliente].endereco.rua);
-      clientes[*indice_cliente].endereco.rua[tam-1] = '\0';
-      fflush(stdin);
+      while(1)
+      {
+        printf("Digite o nome da rua:\n");
+        fgets(clientes[*indice_cliente].endereco.rua, 100, stdin);
+        tam = strlen(clientes[*indice_cliente].endereco.rua);
+        clientes[*indice_cliente].endereco.rua[tam-1] = '\0';
+        fflush(stdin);
+        vazio = buscar_vazio(clientes[*indice_cliente].endereco.rua);
+        if(vazio != 1)
+        {
+          break;
+        }
+        else
+        {
+          printf("Opção inválida\nTente novamente\n");
+        }
+      }
 
       //NUMERO 
       printf("Digite o numero da sua casa:\n");
@@ -149,55 +172,126 @@ void cadastro_cliente( Cliente clientes[], int num, int* indice_cliente)
       getchar();
 
       //COMPLEMENTO 
-      printf("Digite o complemento:\n");
-      fgets(clientes[*indice_cliente].endereco.complemento, 100, stdin);
-      tam = strlen(clientes[*indice_cliente].endereco.complemento);
-      clientes[*indice_cliente].endereco.complemento[tam-1] = '\0';
-      fflush(stdin);
+      while(1)
+      {
+        printf("Digite o complemento:\n");
+        fgets(clientes[*indice_cliente].endereco.complemento, 100, stdin);
+        tam = strlen(clientes[*indice_cliente].endereco.complemento);
+        clientes[*indice_cliente].endereco.complemento[tam-1] = '\0';
+        fflush(stdin);
+        vazio = buscar_vazio(clientes[*indice_cliente].endereco.complemento);
+        if(vazio != 1)
+        {
+          break;
+        }
+        else
+        {
+          printf("Opção inválida\nTente novamente\n");
+        }
+      }
 
       //BAIRRO 
-      printf("Digite o bairro:\n");
-      fgets(clientes[*indice_cliente].endereco.bairro, 30, stdin);
-      tam = strlen(clientes[*indice_cliente].endereco.bairro);
-      clientes[*indice_cliente].endereco.bairro[tam-1] = '\0';
-      fflush(stdin);
-
+      while(1)
+      {
+         printf("Digite o bairro:\n");
+        fgets(clientes[*indice_cliente].endereco.bairro, 30, stdin);
+        tam = strlen(clientes[*indice_cliente].endereco.bairro);
+        clientes[*indice_cliente].endereco.bairro[tam-1] = '\0';
+        fflush(stdin);
+        vazio = buscar_vazio(clientes[*indice_cliente].endereco.bairro);
+        if(vazio != 1)
+        {
+          break;
+        }
+        else
+        {
+          printf("Opção inválida\nTente novamente\n");
+        }
+      }
+  
       //CEP 
-      printf("Digite o seu CEP:\n");
-      fgets(clientes[*indice_cliente].endereco.cep, 10, stdin);
-      tam = strlen(clientes[*indice_cliente].endereco.cep);
-      clientes[*indice_cliente].endereco.cep[tam-1] = '\0';
-      fflush(stdin);
-
-      //CIDADE 
-      printf("Digite a sua cidade:\n");
-      fgets(clientes[*indice_cliente].endereco.cidade, 30, stdin);
-      tam = strlen(clientes[*indice_cliente].endereco.cidade);
-      clientes[*indice_cliente].endereco.cidade[tam-1] = '\0';
-      fflush(stdin);
-
-      //ESTADO 
-      printf("Digite a sigla do seu estado:\n");
-      fgets(clientes[*indice_cliente].endereco.estado, 3, stdin);
-      tam = strlen(clientes[*indice_cliente].endereco.estado);
-      clientes[*indice_cliente].endereco.estado[tam-1] = '\0';
-      fflush(stdin);
-
+      while(1)
+      {
+        printf("Digite o seu CEP:\n");
+        fgets(clientes[*indice_cliente].endereco.cep, 10, stdin);
+        tam = strlen(clientes[*indice_cliente].endereco.cep);
+        clientes[*indice_cliente].endereco.cep[tam-1] = '\0';
+        fflush(stdin);
+        vazio = buscar_vazio(clientes[*indice_cliente].endereco.cep);
+        if(vazio != 1)
+        {
+          break;
+        }
+        else
+        {
+          printf("Opção inválida\nTente novamente\n");
+        }
+      }
       
 
+      //CIDADE 
+      while(1)
+      {
+        printf("Digite a sua cidade:\n");
+        fgets(clientes[*indice_cliente].endereco.cidade, 30, stdin);
+        tam = strlen(clientes[*indice_cliente].endereco.cidade);
+        clientes[*indice_cliente].endereco.cidade[tam-1] = '\0';
+        fflush(stdin);
+        vazio = buscar_vazio(clientes[*indice_cliente].endereco.cidade);
+        if(vazio != 1)
+        {
+          break;
+        }
+        else
+        {
+          printf("Opção inválida\nTente novamente\n");
+        }
+      }
+
+      //ESTADO 
+      while(1)
+      {
+        printf("Digite a sigla do seu estado:\n");
+        fgets(clientes[*indice_cliente].endereco.estado, 3, stdin);
+        tam = strlen(clientes[*indice_cliente].endereco.estado);
+        clientes[*indice_cliente].endereco.estado[tam-1] = '\0';
+        fflush(stdin);
+        vazio = buscar_vazio(clientes[*indice_cliente].endereco.estado);
+        if(vazio != 1)
+        {
+          break;
+        }
+        else
+        {
+          printf("Opção inválida\nTente novamente\n");
+        }
+      }
+  
             //CONTA
       printf("\tConta:\n\n");
       //LOGIN 
       while(fim!=1)
       {
-        //getchar() //no programa aparece o nome conta e quando eu digito qualquer coisa, aparece duas mensagens em seguida: "Digite seu Login" e, mesmo sem digitar nada, "Login disponível"
-        printf("Digite o seu login:\n");
-        fgets(login, 30, stdin);
-        tam = strlen(login);
-        login[tam-1] = '\0';
-        fflush(stdin);
+        while(1)
+        {
+          getchar();
+          printf("Digite o seu login:\n");
+          fgets(login, 30, stdin);
+          tam = strlen(login);
+          login[tam-1] = '\0';
+          fflush(stdin);
+          vazio = buscar_vazio(login);
+          if(vazio != 1)
+          {
+            break;
+          }
+          else
+          {
+            printf("Opção inválida\nTente novamente\n");
+          }
+        }
         resp2 = buscar_login_cliente(clientes, num, login);
-        if(resp2 == -1) // a função login não estave funcionando porque dentro desse if estava resp == -1 ao invés de resp2 == -1
+        if(resp2 == -1)
         {
           printf("Login disponivel\n");
           strcpy(clientes[*indice_cliente].login_password.login, login);
@@ -207,41 +301,37 @@ void cadastro_cliente( Cliente clientes[], int num, int* indice_cliente)
         {
           printf("Login nao disponivel\nTente novamente\n");
         }
-      } // tava faltando essa chaves no laço
+      }
 
       //SENHA
-      while(fim!=0)
+      while(1)
       {
         printf("Escolha uma senha para sua conta:\n");
         fgets(clientes[*indice_cliente].login_password.password, 9, stdin);
         tam = strlen(clientes[*indice_cliente].login_password.password);
         clientes[*indice_cliente].login_password.password[tam-1] = '\0';
         fflush(stdin);
-        fim = 0;
-
-        //STATUS
-        //antes clientes[*indice_cliente].dados.status = 5;
-        clientes[*indice_cliente].dados.status = 1;// conforme documentação
-
-        
-
-        
-        //antes return 1; como o retorno é void, não tem return
+        vazio = buscar_vazio(clientes[*indice_cliente].login_password.password);
+          if(vazio != 1)
+          {
+            break;
+          }
+          else
+          {
+            printf("Opção inválida\nTente novamente\n");
+          }
       }
+        //STATUS
+        clientes[*indice_cliente].dados.status = 1;
 
-      // retirei um chave em excesso que estava aqui
-    //ADICIONEI 
     clientes[*indice_cliente].compras_realizadas = 0;
-    //esse atributo controlará a promoção estabelecida pela nossa empresa.
     (*indice_cliente)++;
-    // após o cadastro do cliente, é necessário incrementar essa variável no main para que o próximo cliente cadastrado não seja sobreescrito.
     }
     
   }
   else
   {
     printf("CPF ja cadastrado\n");
-    // antes return -1; como o retorno é void, não tem return
   }
 }
 
@@ -260,7 +350,7 @@ int remover_cliente(int quant, Cliente clientes[])
   {
     int resp2;
     
-    while(1)// adicionei esse laço para forçar a seleção da opção correta
+    while(1)
     {
       printf("Cliente achado\nDeseja remover cliente?\n1-sim  2-nao\n");
       scanf("%i", &resp2);
