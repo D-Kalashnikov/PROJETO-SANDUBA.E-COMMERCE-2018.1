@@ -29,7 +29,6 @@ void main() {
   	Admin admins[20];
   	int qte_prod_cad = 0, indice_func = 0, indice_cliente = 0;
   	float saldo_bancario = 10000, percentual_sal = 0.01, percentual_odesp = 0.001;
-  	Cliente cliente;
   	int pos_cliente;
   	float somatorio = 0;
   	
@@ -50,7 +49,7 @@ void main() {
   			printf("\n\n");
   			//logon_status = login_function();
   			if(logon_status == -1){
-  				printf("Dados n„o encontrados!\n");
+  				printf("Dados n√£o encontrados!\n");
   				_getch();
   				system("cls");
 			}
@@ -60,12 +59,12 @@ void main() {
 					system("cls");
 					SandubaScreen();
 					printf("\n\n");
-					printf("1 - Realizar compras\n2 - ConfiguraÁıes da conta\nESC - Sair\n");
+					printf("1 - Realizar compras\n2 - Configura√ß√µes da conta\nESC - Sair\n");
 					select = _getch();
 						if(select == '1'){
 							CarrinhoScreen();
 							printf("\n\n");
-							somatorio = compra_sanduiche(produtos, qte_prod_cad, &cliente, &saldo_bancario);
+							somatorio = compra_sanduiche(produtos, qte_prod_cad, pos_cliente, cliente, &saldo_bancario);
 						}
 						
 						else if(select == '2'){
@@ -78,7 +77,7 @@ void main() {
 						}
 						
 						else{
-							printf("Comando inv·lido... Tente novamente...\n");
+							printf("Comando inv√°lido... Tente novamente...\n");
 						}
 				}while(select != esc);
 			}
@@ -88,8 +87,8 @@ void main() {
 					system("cls");
 					SandubaScreen();
 					printf("\n\n");
-					printf("VocÍ desativou esta conta!\n");
-					printf("Gostaria de reativar o acesso?\n\n1 - Sim\n2 - N„o\nESC - Sair\n");
+					printf("Voc√™ desativou esta conta!\n");
+					printf("Gostaria de reativar o acesso?\n\n1 - Sim\n2 - N√£o\nESC - Sair\n");
 					select = _getch();
 						if(select == '1'){
 							
@@ -104,7 +103,7 @@ void main() {
 						}
 						
 						else{
-							printf("Comando inv·lido... Tente novamente...\n");
+							printf("Comando inv√°lido... Tente novamente...\n");
 						}
 				}while(select != esc);
 			}
@@ -121,7 +120,7 @@ void main() {
 					system("cls");
 					AdminScreen();
 					printf("\n\n");
-					printf("1 - Controle de Estoque\n2 - RelatÛrio Financeiro\n3 - Dados cadastrais\nESC - Sair\n");
+					printf("1 - Controle de Estoque\n2 - Relat√≥rio Financeiro\n3 - Dados cadastrais\nESC - Sair\n");
 					select = _getch();
 						if(select == '1'){
 							StorageScreen();
@@ -148,7 +147,7 @@ void main() {
 						}
 						
 						else{
-							printf("Comando inv·lido... Tente novamente...\n");
+							printf("Comando inv√°lido... Tente novamente...\n");
 						}
 				}while(select != esc);
 			}
@@ -158,7 +157,7 @@ void main() {
 					system("cls");
 					AdminScreen();
 					printf("\n\n");
-					printf("1 - Controle de Estoque\n2 - RelatÛrio Financeiro\n3 - Dados cadastrais\nESC - Sair\n");
+					printf("1 - Controle de Estoque\n2 - Relat√≥rio Financeiro\n3 - Dados cadastrais\nESC - Sair\n");
 					select = _getch();
 						if(select == '1'){
 							StorageScreen();
@@ -184,7 +183,7 @@ void main() {
 						}
 						
 						else{
-							printf("Comando inv·lido... Tente novamente...\n");
+							printf("Comando inv√°lido... Tente novamente...\n");
 						}
 				}while(select != esc);
 			}
@@ -213,7 +212,7 @@ void main() {
 		
 		else{
 			system("cls");
-			printf("Comando inv·lido... Tente novamente...\n");
+			printf("Comando inv√°lido... Tente novamente...\n");
 		}
 	  }while(key != esc);
 }
