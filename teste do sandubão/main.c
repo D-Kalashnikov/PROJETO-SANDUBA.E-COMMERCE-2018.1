@@ -26,8 +26,9 @@ void main() {
 	int logon_status=1;
 	Produto produtos[100];
   	Funcionario funcionarios[30];
+	Cliente clientes[100];
   	Admin admins[20];
-  	int qte_prod_cad = 0, indice_func = 0, indice_cliente = 0;
+  	int qte_prod_cad = 0, indice_func = 0, indice_cliente = 0, indice_adm = 0;
   	float saldo_bancario = 10000, percentual_sal = 0.01, percentual_odesp = 0.001;
   	int posicao;
   	float somatorio = 0;
@@ -47,7 +48,7 @@ void main() {
 			system("cls");
   			LoginScreen();
   			printf("\n\n");
-  			//logon_status = login_function();
+  			logon_status = login_function(indice_cliente, indice_adm, posicao, clientes, admins);
   			if(logon_status == -1){
   				printf("Dados não encontrados!\n");
   				_getch();
@@ -64,7 +65,7 @@ void main() {
 						if(select == '1'){
 							CarrinhoScreen();
 							printf("\n\n");
-							somatorio = compra_sanduiche(produtos, qte_prod_cad, posicao, cliente, &saldo_bancario);
+							somatorio = compra_sanduiche(produtos, qte_prod_cad, posicao, clientes, &saldo_bancario);
 						}
 						
 						else if(select == '2'){
