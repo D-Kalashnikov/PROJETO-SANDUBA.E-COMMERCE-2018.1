@@ -31,6 +31,7 @@ int remover_funcionario(int num, Funcionario funcionarios[num])
   int tam;
   printf("Digite o CPF:\n");
   fgets(cpf, 13, stdin);
+  fflush(stdin);
   tam = strlen(cpf);
   cpf[tam-1] = '\0';
   int resp = buscar_funcionario(num, funcionarios, cpf);
