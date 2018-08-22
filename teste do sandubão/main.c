@@ -48,7 +48,7 @@ void main() {
 			system("cls");
   			LoginScreen();
   			printf("\n\n");
-  			logon_status = login_function(indice_cliente, indice_adm,  &posicao, clientes, admins);
+  			logon_status = login_function(indice_cliente, indice_adm, posicao, clientes, admins);
   			if(logon_status == -1){
   				printf("Dados não encontrados!\n");
   				_getch();
@@ -71,7 +71,7 @@ void main() {
 						else if(select == '2'){
 							ConfigScreen();
 							printf("\n\n");
-							printf("1 - 
+							printf("1 - );
 						}
 						
 						else if(select == esc){
@@ -144,6 +144,7 @@ void main() {
 						else if(select == '3'){
 							ConfigScreen();
 							printf("\n\n");
+							printf("1 - Mostrar admins\n2 - Mostrar clientes\n3 - Desabilitar Admin\n4 - Reabilitar Admin\n5 - Bloquear cliente\n6 - Desbloquear cliente\n7 - Adicionar administrador\nESC - Sair\n");
 						}
 						
 						else if(select == esc){
@@ -182,7 +183,7 @@ void main() {
 						else if(select == '3'){
 							ConfigScreen();
 							printf("\n\n");
-							printf("1 -");
+							printf("1 - Mostrar admins\n2 - Mostrar clientes\n3 - Bloquear cliente\n4 - Desbloquear cliente\nESC - Sair\n");
 						}
 						
 						else if(select == esc){
