@@ -356,7 +356,7 @@ int remover_cliente(int quant, Cliente clientes[])
   tam = strlen(cpf);
   cpf[tam-1] = '\0';
   fflush(stdin);
-  resp = buscar_cliente(clientes, quant,  cpf);//inverti os argumentos
+  resp = buscar_cliente(clientes, quant,  cpf);
   if(resp !=-1)
   {
     int resp2;
@@ -377,10 +377,9 @@ int remover_cliente(int quant, Cliente clientes[])
     }
     if(resp2==1)
     {
-      //antes if(clientes[resp].dados.status == 5)
       if(clientes[resp].dados.status == 1)
       {
-        clientes[resp].dados.status = 6; // na documentação não há status para cliente removido, dessa forma, deixei como estava, status 6 é funcionário removido
+        clientes[resp].dados.status = 0;
         printf("Cliente removido\n");
         return 2;
       }
