@@ -645,10 +645,10 @@ float compra_sanduiche(Produto produtos[], int num, int posicao, Cliente cliente
 
     if(compra == 0)
     {
-      (*cliente).compras_realizadas++;
+      cliente[posicao].compras_realizadas++;
       // nas 3° compras o cliente ganha 30% de desconto.
 
-      if(sanduiche.tamanhopao == 15 && (*cliente).compras_realizadas % 3 != 0)
+      if(sanduiche.tamanhopao == 15 && cliente[posicao].compras_realizadas % 3 != 0)
       {
         produtos[sanduiche.pao.id -1].qtd -= 1;
         produtos[sanduiche.pao.id -1].vendidos += 1;
@@ -674,7 +674,7 @@ float compra_sanduiche(Produto produtos[], int num, int posicao, Cliente cliente
         somatorio = somatorio + sanduiche.preco;
         *psaldo_bancario += sanduiche.preco;
       }
-      else if(sanduiche.tamanhopao == 15 && (*cliente).compras_realizadas % 3 == 0)
+      else if(sanduiche.tamanhopao == 15 && cliente[posicao].compras_realizadas % 3 == 0)
       {
         produtos[sanduiche.pao.id -1].qtd -= 1;
         produtos[sanduiche.pao.id -1].vendidos += 1;
@@ -703,7 +703,7 @@ float compra_sanduiche(Produto produtos[], int num, int posicao, Cliente cliente
 
         printf("\nO senhor(a) obteve um desconto de %.2f na compra do sanduíche\n\n", sanduiche.preco * 0.3); //colocar .2f //alterar
       }
-      else if(sanduiche.tamanhopao == 30 && (*cliente).compras_realizadas % 3 != 0)
+      else if(sanduiche.tamanhopao == 30 && cliente[posicao].compras_realizadas % 3 != 0)
       {
         produtos[sanduiche.pao.id -1].qtd -= 2;
         produtos[sanduiche.pao.id -1].vendidos += 2;
@@ -729,7 +729,7 @@ float compra_sanduiche(Produto produtos[], int num, int posicao, Cliente cliente
         somatorio = somatorio + sanduiche.preco;
         *psaldo_bancario += sanduiche.preco;
       }
-      else if(sanduiche.tamanhopao == 30 && (*cliente).compras_realizadas % 3 == 0)
+      else if(sanduiche.tamanhopao == 30 && cliente[posicao].compras_realizadas % 3 == 0)
       {
         produtos[sanduiche.pao.id -1].qtd -= 2;
         produtos[sanduiche.pao.id -1].vendidos += 2;
