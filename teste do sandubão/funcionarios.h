@@ -54,38 +54,95 @@ int remover_funcionario(int num, Funcionario funcionarios[num])
 }
 
 //CADASTRAR FUNCIONARIO
-int cadastrar_funcionario(int num, Funcionario funcionarios[num], int indice_funcionario)
+
+int cadastrar_funcionario(int num, Funcionario funcionarios[num], int* indice_funcionario)
+
 {
-  int tam, resp;
+
+  int tam, resp, vazio, resp2;
+
   char cpf[13];
+
   //CPF
-  printf("Digite o CPF:\n");
-  fgets(cpf, 13, stdin);
-  fflush(stdin);
-  tam = strlen(cpf);
-  cpf[tam-1] = '\0';
-  resp = buscar_funcionario(num, funcionarios, cpf);
-  if(resp==-1)
+  while(1)
   {
-    strcpy(funcionarios[indice_funcionario].dados.cpf, cpf);
-    //NOME
-    printf("Digite o nome do funcionario:\n");
-    fgets(funcionarios[indice_funcionario].dados.nome, 50, stdin);
+    printf("Digite o CPF:\n");
+    fgets(cpf, 13, stdin);
     fflush(stdin);
-    tam = strlen(funcionarios[indice_funcionario].dados.nome);
-    funcionarios[indice_funcionario].dados.nome[tam-1] = '\0';
+    tam = strlen(cpf);
+    cpf[tam-1] = '\0';
+    vazio = buscar_vazio(cpf);
+    if(vazio!= 1)
+    {
+      break;
+    }
+    else
+    {
+      printf("Opcao invalida\nTente novamente\n");
+    }
+  }
+  resp = buscar_funcionario(num, funcionarios, cpf);
+
+  if(resp==-1)
+
+  {
+
+    strcpy(funcionarios[*indice_funcionario].dados.cpf, cpf);
+    printf("Deseja cadastrar funcionario?\n1-sim\n2-nao\n");
+    scanf("%i", &resp2);
+    getchar();
+    if(resp2 == 1)
+    {
+       //NOME
+    while(1)
+    {
+      printf("Digite o nome do funcionario:\n");
+
+      fgets(funcionarios[*indice_funcionario].dados.nome, 50, stdin);
+
+      fflush(stdin);
+
+      tam = strlen(funcionarios[*indice_funcionario].dados.nome);
+
+      funcionarios[*indice_funcionario].dados.nome[tam-1] = '\0';
+      vazio = buscar_vazio(funcionarios[*indice_funcionario].dados.nome);
+      if(vazio!= 1)
+    {
+      break;
+    }
+    else
+    {
+      printf("Opcao invalida\nTente novamente\n");
+    }
+    }
+   
+
       
+
     //IDADE
+
     printf("Digite a idade:\n");
-    scanf("%i", &funcionarios[indice_funcionario].dados.idade);
+
+    scanf("%i", &funcionarios[*indice_funcionario].dados.idade);
+
     getchar();
 
+
+
     //STATUS
-    funcionarios[indice_funcionario].dados.status = 5;
+
+    funcionarios[*indice_funcionario].dados.status = 5;
+
+    (*indice_funcionario)++;
 
     return 1;
+
   }
+    }
+
+
   return -1;
+
 }
 
 //ALTERACAO DE SALARIO
