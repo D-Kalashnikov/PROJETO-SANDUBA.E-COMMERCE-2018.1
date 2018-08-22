@@ -48,7 +48,7 @@ void main() {
 			system("cls");
   			LoginScreen();
   			printf("\n\n");
-  			logon_status = login_function(indice_cliente, indice_adm, posicao, clientes, admins);
+  			logon_status = login_function(indice_cliente, indice_adm,  &posicao, clientes, admins);
   			if(logon_status == -1){
   				printf("Dados não encontrados!\n");
   				_getch();
