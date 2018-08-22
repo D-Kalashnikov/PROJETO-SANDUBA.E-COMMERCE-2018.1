@@ -29,7 +29,7 @@ void main() {
   	Admin admins[20];
   	int qte_prod_cad = 0, indice_func = 0, indice_cliente = 0;
   	float saldo_bancario = 10000, percentual_sal = 0.01, percentual_odesp = 0.001;
-  	int pos_cliente;
+  	int posicao;
   	float somatorio = 0;
   	
   	/*
@@ -64,7 +64,7 @@ void main() {
 						if(select == '1'){
 							CarrinhoScreen();
 							printf("\n\n");
-							somatorio = compra_sanduiche(produtos, qte_prod_cad, pos_cliente, cliente, &saldo_bancario);
+							somatorio = compra_sanduiche(produtos, qte_prod_cad, posicao, cliente, &saldo_bancario);
 						}
 						
 						else if(select == '2'){
