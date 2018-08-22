@@ -306,10 +306,21 @@ void cadastro_cliente( Cliente clientes[], int num, int* indice_cliente)
       //SENHA
       while(1)
       {
+        char c;
         printf("Escolha uma senha para sua conta:\n");
-        fgets(clientes[*indice_cliente].login_password.password, 9, stdin);
-        tam = strlen(clientes[*indice_cliente].login_password.password);
-        clientes[*indice_cliente].login_password.password[tam-1] = '\0';
+        do{
+            c=getch();
+            if(isprint(c)){
+            clientes[*indice_cliente].login_password.password[i]=c;
+            i++;
+            printf("*");
+            }
+            else if(c==8 && i){
+            clientes[*indice_cliente].login_password.password[i]='\0';
+            i--;
+            printf("\b \b");
+            } 
+        }while(c!=13);
         fflush(stdin);
         vazio = buscar_vazio(clientes[*indice_cliente].login_password.password);
           if(vazio != 1)
