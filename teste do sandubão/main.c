@@ -96,7 +96,7 @@ void main() {
 						}
 						
 						else if(select == '2'){
-							
+							system("cls");
 						}
 						
 						else if(select == esc){
