@@ -71,6 +71,7 @@ void main() {
 						else if(select == '2'){
 							ConfigScreen();
 							printf("\n\n");
+							printf("1 - 
 						}
 						
 						else if(select == esc){
@@ -126,8 +127,9 @@ void main() {
 						if(select == '1'){
 							StorageScreen();
 							printf("\n\n");
-							printf("1 - Visualizar Estoque\n2 - Visualizar quantidades\n3 - Visualizar produtos mais vendidos\n4 - Visualizar produtos mais comprados\n5 - Procurar produto\n")
-							gerenciar_produto(produtos, qte_prod_cad, &qte_prod_cad, &saldo_bancario);
+							printf("1 - Visualizar Estoque\n2 - Visualizar quantidades\n3 - Visualizar produtos mais vendidos\n4 - Visualizar produtos mais comprados\n5 - Procurar produto\n6 - Restocagem\n7 - Alterar produtos\nESC - Sair");
+							internal = _getch();
+								
 						}
 						
 						else if(select == '2'){
@@ -164,7 +166,8 @@ void main() {
 						if(select == '1'){
 							StorageScreen();
 							printf("\n\n");
-							gerenciar_produto(produtos, qte_prod_cad, &qte_prod_cad, &saldo_bancario);
+							printf("1 - Visualizar Estoque\n2 - Visualizar quantidades\n3 - Visualizar produtos mais vendidos\n4 - Visualizar produtos mais comprados\n5 - Procurar produto\n6 - Restocagem\n7 - Alterar produtos\nESC - Sair");
+							//gerenciar_produto(produtos, qte_prod_cad, &qte_prod_cad, &saldo_bancario);
 						}
 						
 						else if(select == '2'){
@@ -179,6 +182,7 @@ void main() {
 						else if(select == '3'){
 							ConfigScreen();
 							printf("\n\n");
+							printf("1 -");
 						}
 						
 						else if(select == esc){
